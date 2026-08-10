@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_40venue_ver1.0 / 2026-08-10 -->
+<!-- BUILD_TAG: swo2026_40venue_ver1.2 / 2026-08-10 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -765,6 +765,7 @@ footer a{color:#cfe3f7;}
       </div>
 
       <div id="od-doc" style="display:none;"></div>
+      <div class="err" id="od-send-err"></div>
       <div id="od-done" style="display:none;"></div>
     </div>
     <div class="modal-ft no-print" id="od-ft">
@@ -783,6 +784,9 @@ footer a{color:#cfe3f7;}
 
 /* ====== 設定：商品プランと希望項目（変更はここだけ） ====== */
 var SEND_TO = "science-mail@science-web.online";
+/* 発注データの保存・通知先（Google Apps Script ウェブアプリ）
+   ここに、デプロイ後の実際のURLを設定してください。未設定のままだと発注書は送信できません。 */
+var GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzzeiEymQY1dwFYONoiMNLFOihUswxB5X0SBNdHuyD793LqCGF0JaD1ST7q9je0h2mQ/exec";
 
 var PLANS = [
   {name:"開催案内サポート", desc:"開催案内Webサイト＋演題登録フォーム＋参加登録フォーム", price:400000}
@@ -1094,28 +1098,40 @@ $("od-send").addEventListener("click", function(){
   if(!LAST) return;
   var no=LAST.no, org=LAST.org, nm=LAST.nm, ml=LAST.ml, memo=LAST.memo;
   var p=LAST.plan, sub=LAST.sub, tax=LAST.tax, total=LAST.total, optNames=LAST.optNames;
-    var L="\r\n";
-    var body = "発注書"+L+L
-      + "発注番号：" + no + L
-      + "発行日：" + today() + L + L
-      + "【発注者】" + L
-      + "所属機関名：" + org + L
-      + "氏名：" + nm + L
-      + "メールアドレス：" + ml + L + L
-      + "【選択項目】" + L
-      + "商品プラン：" + p.name + "（" + yen(p.price) + "・税抜）" + L
-      + "希望項目：" + (optNames.length ? optNames.join("／") : "なし") + L + L
-      + "【金額】" + L
-      + "小計（税抜）：" + yen(sub) + L
-      + "消費税（10％）：" + yen(tax) + L
-      + "合計金額（税込）：" + yen(total) + L + L
-      + "【ご連絡事項】" + L
-      + (memo ? memo : "（記載なし）") + L;
 
-    var url = "mailto:" + SEND_TO
-      + "?subject=" + encodeURIComponent("【発注書】" + org + "　" + nm + "　" + no)
-      + "&body=" + encodeURIComponent(body);
-    window.location.href = url;
+  if(GAS_WEB_APP_URL === "GAS_URL_HERE"){
+    showErr($("od-send-err"), "送信先が未設定のため、発注書を送信できません。管理者にご連絡ください。");
+    return;
+  }
+
+  var btn = $("od-send");
+  btn.disabled = true;
+  btn.textContent = "送信中…";
+
+  fetch(GAS_WEB_APP_URL, {
+    method: "POST",
+    headers: {"Content-Type":"text/plain;charset=utf-8"}, // Apps Script側の制約でtext/plainで送る
+    body: JSON.stringify({
+      docNo: no,
+      org: org,
+      name: nm,
+      email: ml,
+      planName: p.name,
+      options: optNames,
+      total: yen(total),
+      memo: memo || ""
+    })
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(json){
+    btn.disabled = false;
+    btn.textContent = "この内容で発注する";
+
+    if(!json || json.ok !== true){
+      showErr($("od-send-err"), "送信に失敗しました。お手数ですが "+esc(SEND_TO)+" 宛に直接ご連絡ください。");
+      return;
+    }
+    hideErr($("od-send-err"));
 
     $("od-doc").style.display="none";
     $("od-done").style.display="block";
@@ -1123,10 +1139,15 @@ $("od-send").addEventListener("click", function(){
         '<div class="done"><div class="mk">✓</div>'
       + '<h3>発注内容を送信しました</h3>'
       + '<p>発注番号　'+esc(no)+'</p>'
-      + '<p>ご入力のメールアドレス（'+esc(ml)+'）宛に、受付のご連絡を差し上げます。</p>'
-      + '<p style="margin-top:14px;font-size:13px;">メールソフトが起動しない場合は、お手数ですが '+esc(SEND_TO)+' 宛にご連絡ください。</p></div>';
+      + '<p>担当より、ご入力のメールアドレス（'+esc(ml)+'）宛にご連絡いたします。</p></div>';
     setStep($("od-steps"),2);
     show("od-back",0); show("od-send",0); show("od-next",0); show("od-print",1);
+  })
+  .catch(function(err){
+    btn.disabled = false;
+    btn.textContent = "この内容で発注する";
+    showErr($("od-send-err"), "通信エラーが発生しました。お手数ですが "+esc(SEND_TO)+" 宛に直接ご連絡ください。");
+  });
 });
 
 /* ====== モーダル開閉 ====== */
