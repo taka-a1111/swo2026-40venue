@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_40venue_ver1.6 / 2026-08-10 -->
+<!-- BUILD_TAG: swo2026_40venue_ver2.1w / 2026-08-12 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -67,22 +67,25 @@ header{
 
 /* ============ ヒーロー ============ */
 .hero{
-  background:linear-gradient(160deg,var(--navy) 0%,#0a5aa8 55%,#0d6cc4 100%);
-  color:#fff;padding:44px 0 36px;
+  background:#fff;
+  color:var(--ink);padding:52px 0 44px;
+  border-bottom:1px solid var(--line);
 }
 .hero-lead{font-size:14px;opacity:.92;margin:0 0 14px;}
 .hero h1{
-  font-size:34px;line-height:1.35;margin:0 0 6px;font-weight:900;letter-spacing:.01em;
+  font-size:40px;line-height:1.32;margin:0 0 6px;font-weight:900;letter-spacing:.01em;
+  color:var(--ink);
 }
-.hero h1 .sub{display:block;font-size:19px;font-weight:700;opacity:.95;margin-bottom:6px;}
+.hero h1 .sub{display:block;font-size:19px;font-weight:700;color:var(--navy);margin-bottom:8px;}
 .hero-price{
   display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 8px;
 }
 .hero-card{
-  flex:1 1 240px;background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.35);border-radius:10px;padding:16px 18px;
+  flex:1 1 240px;background:var(--navy);color:#fff;
+  border:1px solid var(--navy);border-radius:12px;padding:20px 24px;
+  box-shadow:0 6px 22px rgba(0,64,128,.18);
 }
-.hero-card .p{font-size:30px;font-weight:900;color:var(--yellow);line-height:1.2;}
+.hero-card .p{font-size:38px;font-weight:900;color:var(--yellow);line-height:1.2;}
 .hero-card .n{font-size:15px;font-weight:700;margin-bottom:4px;}
 .hero-card .d{font-size:13px;opacity:.92;line-height:1.6;}
 .hero-tags{font-size:13px;opacity:.9;margin:14px 0 0;}
@@ -152,6 +155,114 @@ section:nth-of-type(even){background:var(--bg);}
 /* ============ 料金 ============ */
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .plans.single{grid-template-columns:minmax(0,420px);justify-content:center;}
+
+/* ====== 新原稿セクション用 ====== */
+.sub-ttl{font-size:17px;font-weight:800;color:var(--navy);margin:30px 0 12px;padding-left:12px;border-left:5px solid var(--navy);}
+
+/* お悩み・よくある失敗 */
+.worries{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.worries li{background:#fff;border:1px solid var(--line);border-radius:8px;padding:13px 14px 13px 40px;position:relative;font-size:14.5px;line-height:1.65;}
+.worries li:before{content:"✓";position:absolute;left:14px;top:12px;color:var(--accent);font-weight:900;}
+
+/* 解決の一文 */
+.answer-box{margin-top:24px;background:var(--navy);color:#fff;border-radius:10px;padding:22px 24px;text-align:center;}
+.answer-ttl{font-size:19px;font-weight:900;margin:0 0 8px;}
+.answer-txt{font-size:14.5px;line-height:1.8;margin:0;opacity:.95;}
+
+/* 40万円プランの仕様表 */
+.plan .spec{width:100%;border-collapse:collapse;margin:6px 0 14px;}
+.plan .spec th,.plan .spec td{border-bottom:1px dotted var(--line);padding:9px 4px;font-size:13.5px;text-align:left;vertical-align:top;}
+.plan .spec th{width:44%;font-weight:800;color:var(--navy);}
+.plan .term{list-style:none;margin:0;padding:12px 14px;background:var(--navy-l);border-radius:8px;font-size:13px;line-height:1.8;}
+.plan .term li:before{content:"・";}
+
+/* 追加できます／無料です */
+.box-ttl{font-size:17px;font-weight:800;color:var(--navy);margin:0 0 12px;}
+.addon,.freebox,.company{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;}
+.freebox{background:#FFFBEA;border-color:#F0DFA8;}
+.free{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.free li{background:#fff;border:1px solid #F0DFA8;border-radius:8px;padding:14px;text-align:center;font-size:14px;}
+.free li b{display:block;margin-top:6px;font-size:19px;color:var(--accent);}
+
+/* ベーシックプランへの導線 */
+.basic-link{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;
+  background:#fff;border:2px dashed var(--navy);border-radius:10px;padding:16px 20px;}
+.bl-name{font-weight:800;color:var(--navy);font-size:15px;}
+.bl-price{font-weight:900;font-size:22px;color:var(--navy);}
+.bl-desc{font-size:14px;color:var(--gray);flex:1 1 200px;}
+.bl-btn{background:var(--navy);color:#fff;text-decoration:none;font-weight:700;font-size:14px;
+  padding:10px 18px;border-radius:6px;white-space:nowrap;}
+.bl-btn:hover{opacity:.88;}
+
+/* ＦＡＱ */
+.qa{margin:0;}
+.qa dt{font-weight:800;color:var(--navy);font-size:15px;margin-top:16px;padding-left:30px;position:relative;}
+.qa dt:before{content:"Ｑ";position:absolute;left:0;top:0;color:var(--accent);font-weight:900;}
+.qa dd{margin:8px 0 0 0;padding:12px 14px 12px 30px;background:#fff;border:1px solid var(--line);
+  border-radius:8px;font-size:14px;line-height:1.8;position:relative;}
+.qa dd:before{content:"Ａ";position:absolute;left:12px;top:12px;color:var(--navy);font-weight:900;}
+
+/* 実績 */
+.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.work-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--navy);
+  border-radius:8px;padding:16px 18px;}
+.wc-ttl{font-size:13px;font-weight:800;color:var(--accent);margin-bottom:6px;}
+.wc-main{font-size:22px;font-weight:900;color:var(--navy);line-height:1.3;}
+.wc-sub{font-size:13.5px;line-height:1.75;color:var(--ink);margin-top:4px;}
+.recent{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.recent li{background:var(--navy-l);border-radius:6px;padding:12px 14px;font-size:14px;font-weight:700;color:var(--navy);}
+
+/* ご相談 */
+.talk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.talk-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+.tc-ttl{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;padding-bottom:8px;border-bottom:2px solid var(--navy-l);}
+.talk-card p{margin:0;font-size:14px;line-height:1.8;}
+.ceo-txt{margin:14px 0 0;font-size:13.5px;line-height:1.85;color:var(--gray);}
+
+/* フッター */
+/* 追加記載欄（入力フォーム） */
+.opt{margin-left:8px;font-size:11px;font-weight:600;color:#fff;background:var(--gray);border-radius:3px;padding:2px 7px;}
+.fld-note{margin:0 0 8px;font-size:12.5px;color:var(--gray);line-height:1.6;}
+.ex-row{display:flex;gap:8px;margin-bottom:7px;}
+.ex-row .ex-l{flex:0 0 38%;}
+.ex-row .ex-v{flex:1 1 auto;}
+.ex-row input{padding:9px 10px;font-size:14px;border:1px solid var(--line);border-radius:5px;width:100%;font-family:inherit;}
+.ex-row input:focus{outline:2px solid var(--navy);outline-offset:-1px;}
+
+/* 帳票内：追加記載欄・希望項目リスト */
+.doc .doc-extra{margin-top:10px;}
+.doc .opt-list th,.doc .opt-list td{padding:6px 8px;font-size:12.5px;}
+
+@media (max-width:560px){
+  .ex-row{flex-direction:column;gap:5px;}
+  .ex-row .ex-l{flex:1 1 auto;}
+}
+
+.ft-brand{margin:0 0 8px;font-weight:800;font-size:15px;}
+.ft-a{color:#fff;text-decoration:underline;opacity:.92;word-break:break-all;}
+.ft-nav{list-style:none;display:flex;flex-wrap:wrap;gap:6px 18px;margin:14px 0 0;padding:0;}
+.ft-nav a{color:#fff;text-decoration:none;font-size:13.5px;font-weight:700;opacity:.92;}
+.ft-nav a:hover{text-decoration:underline;}
+
+/* 吹き出し */
+.say{display:inline-block;margin-left:10px;background:var(--accent);color:#fff;font-size:12px;font-weight:800;
+  border-radius:14px;padding:3px 12px;position:relative;white-space:nowrap;}
+.say2{display:inline-block;margin-left:10px;background:var(--yellow);color:#4a3b00;font-size:12.5px;font-weight:800;
+  border-radius:14px;padding:3px 12px;white-space:nowrap;}
+@media (max-width:560px){ .say,.say2{display:block;margin:6px 0 0;width:fit-content;} }
+.ft-line{margin:0 0 4px;font-size:13.5px;opacity:.92;}
+.ft-copy{margin:14px 0 0;font-size:12px;opacity:.75;}
+
+@media (max-width:760px){
+  .worries{grid-template-columns:1fr;}
+  .free{grid-template-columns:1fr;}
+  .works-grid{grid-template-columns:1fr;}
+  .recent{grid-template-columns:1fr;}
+  .talk-grid{grid-template-columns:1fr;}
+  .answer-ttl{font-size:17px;}
+  .basic-link{flex-direction:column;align-items:flex-start;}
+  .bl-btn{width:100%;text-align:center;}
+}
 @media (max-width:880px){ .plans{grid-template-columns:1fr;} }
 .plan{
   background:var(--white);border:2px solid var(--line);border-radius:12px;
@@ -365,286 +476,253 @@ footer a{color:#cfe3f7;}
     <nav>
       <ul class="gnav" id="gnav">
         <li><a href="#top">トップ</a></li>
-        <li><a href="#pricing">料金</a></li>
-        <li><a href="#products">商品概要</a></li>
-        <li><a href="#outsourcing">業務委託</a></li>
-        <li><a href="#about">会社概要</a></li>
+        <li><a href="#price40">40万円</a></li>
+        <li><a href="#faq">ＦＡＱ</a></li>
+        <li><a href="#works">実績</a></li>
+        <li><a href="#contact">ご相談</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<!-- ===== 1画面目：トップページ ===== -->
+<!-- ===== 1画面目：トップ ===== -->
 <div class="hero" id="top">
   <div class="wrap">
-    <p class="hero-lead">2007年から研究者に信頼されて、大学・学会・国際シンポジウムをサポート。</p>
     <h1>
-      <span class="sub">苦労しない学会・大会と国際会議の準備は、</span>
-      開催案内も登録フォームも、<br>ひとつの窓口で。
+      <span class="sub">学会・国際会議の開催準備のお悩みを解決します</span>
+      開催案内、演題登録、<br>参加登録、カード決済
     </h1>
     <div class="hero-price">
       <div class="hero-card">
-        <div class="n">開催案内サポート</div>
-        <div class="p">40万円</div>
-        <div class="d">開催案内Webサイト＋演題登録フォーム＋参加登録フォーム</div>
+        <div class="n">プレミアムプラン</div>
+        <div class="p">基本40万円<small style="font-size:15px;font-weight:700;">（税別）</small></div>
+        <div class="d">入稿完了から３週間で公開！</div>
       </div>
     </div>
-    <p class="hero-tags">３週間納品／低予算／ＣＭＳ／ＳＥＯ／スマホ対応／アクセス解析</p>
-    <div class="hero-note">入稿完了から３週間にて公開完了。追加請求なし（アドオン可）。</div>
   </div>
 </div>
 
 <section>
   <div class="wrap">
-    <h2 class="sec-ttl">選ばれる理由</h2>
-    <p class="sec-desc">研究用途に特化した設計だから、担当者が交代しても止まりません。</p>
-    <ul class="points">
-      <li>明確な仕様・単一価格<span>見積のたびに金額が変わりません。</span></li>
-      <li>追加請求なし<span>必要な機能はアドオンで明示的に追加します。</span></li>
-      <li>外部ドメイン／サーバー対応<span>既存の環境をそのまま使えます。</span></li>
-      <li>ＳＥＯ設計・導線設計込み<span>公開して終わりにしません。</span></li>
-      <li>ＣＭＳで誰でも更新可能<span>専門知識なしで更新管理できます。</span></li>
-      <li>３週間にて活用開始<span>入稿完了から３週間以内に公開します。</span></li>
-      <li>公開後も保守契約で安定運用<span>障害対応・バックアップまで。</span></li>
-      <li>２段階認証でログイン<span>登録データを安全に扱います。</span></li>
+    <h2 class="sec-ttl">大会長・組織委員長　お悩みですか</h2>
+    <ul class="worries">
+      <li>ホームページ・演題登録・参加登録を、別々に準備している<span class="say">お任せください！？</span></li>
+      <li>学生や担当者に任せていて、引き継ぎが不安</li>
+      <li>短期間で公開しなければならない</li>
+      <li>公開後の更新・サーバー管理まで手が回らない</li>
+      <li>運営委員は、国内あちこちに。国際委員は、世界のアチコチに</li>
+      <li>海外招へい費用、協賛金、懇親会の会場予約、研究施設訪問</li>
     </ul>
 
-    <div class="cta-box">
-      <p class="cta-ttl">お見積・ご発注は、この画面で完了します</p>
-      <p class="cta-sub">基本見積書と参考見積書はその場で作成・印刷、発注書はそのまま送信できます。</p>
-      <div class="btns">
-        <button class="btn btn-quote" data-open="m-basic">基本見積書<small>その場で作成・印刷</small></button>
-        <button class="btn btn-quote2" data-open="m-ref">参考見積書<small>希望項目を含めて計算</small></button>
-        <button class="btn btn-order" data-open="m-order">発注書<small>入力してそのまま送信</small></button>
-      </div>
-      <div class="btns two" style="margin-top:12px;">
-        <a class="btn btn-contact" href="mailto:science-mail@science-web.online?subject=%E3%81%8A%E5%95%8F%E5%90%88%E3%81%9B%EF%BC%88%E5%AD%A6%E4%BC%9A%E3%83%BB%E5%A4%A7%E4%BC%9A%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%EF%BC%89">お問合せ<small>メールで相談する</small></a>
-        <a class="btn btn-zoom" href="mailto:science-mail@science-web.online?subject=Zoom%E7%9B%B8%E8%AB%87%E3%81%AE%E5%B8%8C%E6%9C%9B&amp;body=%E3%81%94%E5%B8%8C%E6%9C%9B%E6%97%A5%E6%99%82%EF%BC%88%E7%AC%AC3%E5%B8%8C%E6%9C%9B%E3%81%BE%E3%81%A7%EF%BC%89%EF%BC%9A%0D%0A%0D%0A%E3%81%94%E6%89%80%E5%B1%9E%EF%BC%9A%0D%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0D%0A">Zoom相談<small>画面を見ながら相談</small></a>
-      </div>
+    <div class="answer-box">
+      <p class="answer-ttl">開催準備の作業と負担をまとめて軽減します</p>
+      <p class="answer-txt">学会準備にて必要な機能を、最初からセットアップします。<span class="say2">もちろんです！</span><br>学会開催前も、閉会後も。</p>
+    </div>
+
+    <div class="btns two" style="margin-top:26px;">
+      <a class="btn btn-contact" href="mailto:swo-mail@science-web.online?subject=%E3%83%A1%E3%83%BC%E3%83%AB%E7%9B%B8%E8%AB%87%E3%81%8A%E7%94%B3%E8%BE%BC%E3%81%BF">メール相談お申込み<small>swo-mail@science-web.online</small></a>
+      <a class="btn btn-zoom" href="mailto:swo-zoom@science-web.online?subject=Zoom%E7%9B%B8%E8%AB%87%E3%81%8A%E7%94%B3%E8%BE%BC%E3%81%BF&amp;body=%E3%81%94%E5%B8%8C%E6%9C%9B%E6%97%A5%E6%99%82%EF%BC%88%E7%AC%AC3%E5%B8%8C%E6%9C%9B%E3%81%BE%E3%81%A7%EF%BC%89%EF%BC%9A%0D%0A%0D%0A%E3%81%94%E6%89%80%E5%B1%9E%EF%BC%9A%0D%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0D%0A">Zoom相談お申込み<small>swo-zoom@science-web.online</small></a>
     </div>
   </div>
 </section>
 
-<!-- ===== 2画面目：料金説明 ===== -->
-<section id="pricing">
+<!-- ===== 2画面目：40万円 ===== -->
+<section id="price40">
   <div class="wrap">
-    <h2 class="sec-ttl">料金</h2>
-    <p class="sec-desc">開催案内商品は単一パック・単一価格です。表示価格は税抜です。</p>
+    <h2 class="sec-ttl">必要な開催案内を、まとめて制作・準備します</h2>
 
     <div class="plans single">
       <div class="plan rec">
-        <span class="plan-badge">開催案内商品</span>
-        <h3>開催案内サポート</h3>
-        <p class="cat">開催案内Webサイト＋２種類の登録フォーム</p>
+        <span class="plan-badge">プレミアムプラン</span>
+        <h3>プレミアムプラン</h3>
         <div class="price">40<small>万円</small></div>
-        <div class="tax">税抜／一式</div>
-        <ul>
-          <li>開催案内Webサイト　10画面</li>
-          <li>演題登録フォーム</li>
-          <li>参加登録フォーム</li>
-          <li>カード決済・編集機能</li>
-          <li>ドメイン登録・サーバ利用</li>
-          <li>ＣＭＳ制作／ＳＥＯ／アクセス解析</li>
+        <div class="tax">税別／一式</div>
+        <table class="spec">
+          <tr><th>開催案内ホームページ</th><td>10画面</td></tr>
+          <tr><th>演題登録フォーム</th><td>アブストラクト受付・収集</td></tr>
+          <tr><th>参加登録フォーム</th><td>本人・懇親会・見学・同行者</td></tr>
+          <tr><th>カード決済</th><td>ＶＩＳＡ・ＭＡＳＴＥＲ・ＪＣＢ・ほか</td></tr>
+          <tr><th>スマートフォン対応</th><td>ＣＭＳ・アクセス解析</td></tr>
+          <tr><th>登録者マイページ</th><td>管理画面・２段階認証</td></tr>
+        </table>
+        <ul class="term">
+          <li>アクセス解析　公開から６か月間</li>
+          <li>ドメイン・サーバ　発注から閉会後２か月間まで利用</li>
         </ul>
-        <button class="btn btn-quote" data-open="m-basic" data-plan="0">このプランで見積</button>
       </div>
     </div>
 
     <div class="addon">
-      <h3>アドオン（希望項目）</h3>
-      <p class="note">パック商品に含まれない項目は、必要なものだけを追加できます。参考見積書で合計金額を確認できます。</p>
+      <h3 class="box-ttl">追加できます　業務委託</h3>
       <table class="tbl">
-        <tr><th>ドメイン登録料</th><td class="num">10,000円／年</td><td>閉会後２か月間有効。</td></tr>
-        <tr><th>サーバー利用料</th><td class="num">70,000円／年</td><td>閉会後２か月間有効。</td></tr>
-        <tr><th>保守管理の業務契約</th><td class="num">10,000円／月</td><td>サーバー・ドメイン管理、ＳＳＬ更新、バックアップ、障害対応。</td></tr>
-        <tr><th>運用代行の業務契約</th><td class="num">10,000円／月</td><td>掲載と更新、整備、更新支援。月５回まで。</td></tr>
-        <tr><th>カード決済手数料</th><td class="num">10,000円／月</td><td>ＶＩＳＡ・ＭＡＳＴＥＲ・ＪＣＢ。カード手数料５％。</td></tr>
+        <tr><th>保守管理業務委託契約</th><td class="num">10,000円／月</td><td>サーバ管理・メール保守</td></tr>
+        <tr><th>運用代行業務委託契約</th><td class="num">10,000円／月</td><td>メール対応（登録者・主催者）</td></tr>
+        <tr><th>その他。更新・技術作業</th><td class="num">ご相談ください</td><td>&nbsp;</td></tr>
       </table>
-      <p class="note" style="margin:12px 0 0;">消費税10％は別途申し受けます。</p>
     </div>
 
-    <div class="cta-box on-white">
-      <p class="cta-ttl">金額を確かめる</p>
-      <p class="cta-sub">基本見積書は所属機関名とプランのみ。参考見積書は希望項目を含めた合計金額まで表示します。</p>
-      <div class="btns">
-        <button class="btn btn-quote" data-open="m-basic">基本見積書<small>その場で作成・印刷</small></button>
-        <button class="btn btn-quote2" data-open="m-ref">参考見積書<small>希望項目を含めて計算</small></button>
-        <button class="btn btn-order" data-open="m-order">発注書<small>入力してそのまま送信</small></button>
-      </div>
+    <div class="freebox">
+      <h3 class="box-ttl">無料です</h3>
+      <ul class="free">
+        <li>テキスト修正は、<b>月３件</b></li>
+        <li>画像と表の更新は、<b>月３件</b></li>
+        <li>Zoomご相談は、<b>月３回</b></li>
+      </ul>
     </div>
-  </div>
-</section>
 
-<!-- ===== 3画面目：商品概要 ===== -->
-<section id="products">
-  <div class="wrap">
-    <h2 class="sec-ttl">商品概要</h2>
-    <p class="sec-desc">学会・大会・国際会議の運営に必要な機能を、パックでご提供します。</p>
-    <div class="prods">
-      <div class="prod">
-        <h3>開催案内Ｗｅｂサイト</h3>
-        <p>ホームページ10画面。学会・大会の告知に必要な構成を最初から備えています。</p>
-        <ul>
-          <li>トップページ・トピックス</li>
-          <li>開催概要／会長挨拶</li>
-          <li>紹介（運営委員会・招待講演者）</li>
-          <li>プログラム</li>
-          <li>演題登録の受付／参加登録の受付／協賛金の受付</li>
-          <li>アクセス　ほか</li>
-        </ul>
-      </div>
-      <div class="prod">
-        <h3>演題登録フォーム</h3>
-        <p>アブストラクトの応募・収集に対応します。オーラル・ポスターの区分に対応。</p>
-        <ul>
-          <li>応募データの一覧管理</li>
-          <li>マイページ・管理者ページ</li>
-          <li>２段階認証によるログイン</li>
-        </ul>
-      </div>
-      <div class="prod">
-        <h3>参加登録フォーム</h3>
-        <p>本人・同行者・懇親会・市内ツアーなど、参加区分をまとめて受け付けます。</p>
-        <ul>
-          <li>会費徴収フォーム</li>
-          <li>カード決済（ＶＩＳＡ・ＭＡＳＴＥＲ・ＪＣＢ）</li>
-          <li>カード手数料５％</li>
-        </ul>
-      </div>
-      <div class="prod">
-        <h3>共通で含まれるもの</h3>
-        <p>すべてのプランで、公開後の運用まで見据えた設計をしています。</p>
-        <ul>
-          <li>ＣＭＳ制作（専門知識なしで更新管理）</li>
-          <li>スマホに最適化（レスポンシブ対応）</li>
-          <li>アクセス解析（６ヶ月間）</li>
-          <li>ＳＥＯ（検索エンジン最適化への対応）</li>
-          <li>修正と更新　月２件まで無料</li>
-          <li>Zoom相談　月２回まで</li>
-        </ul>
-      </div>
+    <div class="btns" style="margin-top:26px;">
+      <button class="btn btn-quote" data-open="m-basic">基本見積書ダウンロード<small>その場で作成・印刷</small></button>
+      <button class="btn btn-quote2" data-open="m-ref">最適見積書ダウンロード<small>希望項目を含めて計算</small></button>
+      <button class="btn btn-order" data-open="m-order">仕様書・発注書・請書<small>入力してそのまま送信</small></button>
+    </div>
+
+    <div class="basic-link">
+      <span class="bl-name">ベーシックプラン</span>
+      <span class="bl-price">30万円</span>
+      <span class="bl-desc">演題登録・参加登録フォーム</span>
+      <a class="bl-btn" href="https://science-web.online/30venue" target="_blank" rel="noopener">詳しくはこちら</a>
     </div>
   </div>
 </section>
 
-<!-- ===== 4画面目：業務委託 ===== -->
-<section id="outsourcing">
+<!-- ===== 3画面目：ＦＡＱ ===== -->
+<section id="faq">
   <div class="wrap">
-    <h2 class="sec-ttl">業務委託</h2>
-    <p class="sec-desc">制作後の保守管理と運用代行を、月額の業務委託でお請けします。パック商品には含まれません。</p>
+    <h2 class="sec-ttl">「制作と公開で終わり」ではありません</h2>
 
-    <div class="flow">
-      <div><i>ステップ1</i><b>ご相談</b>開催規模・時期・必要な機能をうかがいます。Zoom相談も可能です。</div>
-      <div><i>ステップ2</i><b>お見積・ご発注</b>この画面で見積書を作成し、発注書を送信いただけます。</div>
-      <div><i>ステップ3</i><b>入稿・制作</b>入稿完了から３週間以内に公開します。</div>
-      <div><i>ステップ4</i><b>公開後の運用</b>保守管理・運用代行の業務委託で継続支援します。</div>
-    </div>
+    <h3 class="sub-ttl">よくある失敗は、</h3>
+    <ul class="worries">
+      <li>学生・ポスドク任せで、卒業・異動後に更新が止まる</li>
+      <li>秘書・事務局スタッフの交代後、誰も更新できない</li>
+      <li>外部に外注したが、運用しにくい設計になっている</li>
+    </ul>
 
-    <div class="prods">
-      <div class="prod">
-        <h3>保守管理の業務</h3>
-        <p>安全・安定に継続運用することを目的とします。10,000円／月、一括払い。</p>
-        <ul>
-          <li>サーバー・ドメイン管理　月1回まで</li>
-          <li>ＳＳＬ証明書の更新　年1回まで</li>
-          <li>サーバーバックアップ　月２回まで</li>
-          <li>障害対応　月２件まで（一次対応＋復旧支援）</li>
-          <li>運用とセキュリティ助言　月２回まで（各1時間以内）</li>
-        </ul>
-        <p style="font-size:13px;color:var(--gray);margin:10px 0 0;">機器の購入・修理・設置、データ入力、大規模リニューアル、ＳＥＯ実施は含みません。</p>
-      </div>
-      <div class="prod">
-        <h3>運用代行の業務</h3>
-        <p>学生募集、研究成果の発信、外部資金獲得の整備を目的とします。10,000円／月、一括払い。</p>
-        <ul>
-          <li>テキスト修正　400字以内</li>
-          <li>画像差替え　２点以内</li>
-          <li>リンク修正　３点以内</li>
-          <li>いずれの作業も月５回までお請けします</li>
-        </ul>
-        <p style="font-size:13px;color:var(--gray);margin:10px 0 0;">構成変更、ページ追加、デザイン変更は別途お見積りいたします。</p>
-      </div>
-    </div>
+    <h3 class="sub-ttl">その解決策は、</h3>
+    <ul class="points">
+      <li>ＣＭＳスタイル<span>誰でも引き継げます。</span></li>
+      <li>更新・管理<span>専門知識なしでもＯＫ。</span></li>
+      <li>保守管理・運用代行<span>公開後も業務委託が可能です。</span></li>
+    </ul>
 
-    <div class="cta-box on-white">
-      <p class="cta-ttl">まずはご相談ください</p>
-      <p class="cta-sub">仕様がお決まりでない段階でも、参考見積書で概算を確認いただけます。</p>
-      <div class="btns two">
-        <a class="btn btn-contact" href="mailto:science-mail@science-web.online?subject=%E3%81%8A%E5%95%8F%E5%90%88%E3%81%9B%EF%BC%88%E6%A5%AD%E5%8B%99%E5%A7%94%E8%A8%97%EF%BC%89">お問合せ<small>メールで相談する</small></a>
-        <a class="btn btn-zoom" href="mailto:science-mail@science-web.online?subject=Zoom%E7%9B%B8%E8%AB%87%E3%81%AE%E5%B8%8C%E6%9C%9B">Zoom相談<small>画面を見ながら相談</small></a>
-      </div>
+    <h3 class="sub-ttl">よくあるご質問は、</h3>
+    <dl class="qa">
+      <dt>どのくらいで公開できますか？</dt>
+      <dd>入稿完了から３週間での公開を基本としています。</dd>
+      <dt>担当者が交代しても大丈夫ですか？</dt>
+      <dd>どなたでも引き継げるＣＭＳにて制作します。</dd>
+      <dt>公開後も更新できますか？</dt>
+      <dd>ＣＭＳで更新・管理できます。納品の際に「ＣＭＳガイド」を提供いたします。保守管理・運用代行も別途契約可能です。</dd>
+      <dt>基本費用40万円以外の費用は？</dt>
+      <dd>ほとんどは含まれております。カード決済手数料、消費税、などは別です。保守管理・運用代行は別途契約にてご案内します。</dd>
+    </dl>
+
+    <div class="btns two" style="margin-top:26px;">
+      <a class="btn btn-contact" href="mailto:swo-mail@science-web.online?subject=%E3%83%A1%E3%83%BC%E3%83%AB%E7%9B%B8%E8%AB%87%E3%81%8A%E7%94%B3%E8%BE%BC%E3%81%BF">メール相談お申込み<small>swo-mail@science-web.online</small></a>
+      <a class="btn btn-zoom" href="mailto:swo-zoom@science-web.online?subject=Zoom%E7%9B%B8%E8%AB%87%E3%81%8A%E7%94%B3%E8%BE%BC%E3%81%BF&amp;body=%E3%81%94%E5%B8%8C%E6%9C%9B%E6%97%A5%E6%99%82%EF%BC%88%E7%AC%AC3%E5%B8%8C%E6%9C%9B%E3%81%BE%E3%81%A7%EF%BC%89%EF%BC%9A%0D%0A%0D%0A%E3%81%94%E6%89%80%E5%B1%9E%EF%BC%9A%0D%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0D%0A">Zoom相談お申込み<small>swo-zoom@science-web.online</small></a>
     </div>
   </div>
 </section>
 
-<!-- ===== 5画面目：会社概要 ===== -->
-<section id="about">
+<!-- ===== 4画面目：実績 ===== -->
+<section id="works">
   <div class="wrap">
-    <h2 class="sec-ttl">会社概要</h2>
-    <p class="sec-desc">2007年の創業以来、研究者の事業を幅広くサポートしています。</p>
-    <div class="about">
-      <div class="about-box">
-        <h3>制作企業</h3>
-        <dl class="info">
-          <dt>会社名</dt><dd>サイエンスウェブ株式会社</dd>
-          <dt>所在地</dt><dd>茨城県つくば市二の宮</dd>
-          <dt>代表取締役</dt><dd>丹野篤美</dd>
-          <dt>創業</dt><dd>2007年8月7日</dd>
-          <dt>コーポレートサイト</dt><dd><a href="https://www.science-web.co.jp/" target="_blank" rel="noopener">https://www.science-web.co.jp/</a></dd>
-        </dl>
-        <p style="font-size:14px;color:var(--gray);margin:14px 0 0;">代表は大学で物理学を専攻し、独立ソフトウェア会社（ＨＩＴＡＣＨＩ系）にてＩＴの専門知識と経験を積んだのち、科学技術の街　茨城県つくば市にて創業。Ｗｅｂサイト制作やＷｅｂシステム開発と運営管理を多数推進しました。</p>
-      </div>
+    <h2 class="sec-ttl">研究者・学会・大学に選ばれています</h2>
+    <p class="sec-desc">1997年から国際シンポジウムと学会開催を支援。研究者をサポートしています。</p>
 
-      <div class="about-box">
-        <h3>実績</h3>
-        <ul class="works">
-          <li><b>学会</b>　年30件以上。</li>
-          <li><b>国立研究開発法人</b>　産総研、理研、ＪＡＸＡ、ほか。</li>
-          <li><b>国立大学法人</b>　東京大学、筑波大学、ほか。</li>
-        </ul>
-        <p style="font-size:13.5px;color:var(--gray);margin:14px 0 0;">研究用途に特化した設計のため、一般企業向けとは別の構造でご提供しています。担当者が交代しても運用できるＣＭＳ構造です。</p>
+    <div class="works-grid">
+      <div class="work-card">
+        <div class="wc-ttl">学会</div>
+        <div class="wc-main">年30件以上</div>
+        <div class="wc-sub">医学系・情報系・教育系・史学系、など。</div>
+      </div>
+      <div class="work-card">
+        <div class="wc-ttl">国立研究開発法人</div>
+        <div class="wc-sub">産総研、理研、農研機構、高エネ研、物材研、JAXA、など</div>
+      </div>
+      <div class="work-card">
+        <div class="wc-ttl">国立大学法人</div>
+        <div class="wc-sub">東京大学、北海道大学・東北大学・名古屋大学・京都大学・大阪大学・九州大学、など</div>
+      </div>
+      <div class="work-card">
+        <div class="wc-ttl">私立大学</div>
+        <div class="wc-sub">慶應義塾、早稲田大学、立教大学、日本大学、など</div>
+      </div>
+      <div class="work-card">
+        <div class="wc-ttl">３週間以内に公開</div>
+        <div class="wc-sub">入稿完了から。</div>
       </div>
     </div>
 
-    <div class="contact-line">
-      <p style="margin:0 0 8px;"><b>電話ご相談は、</b>　<a href="tel:050-3538-7006">050-3538-7006</a>　（平日10時〜16時）</p>
-      <p style="margin:0 0 8px;"><b>ご相談メールは、</b>　<a href="mailto:science-mail@science-web.online">science-mail@science-web.online</a></p>
-      <p style="margin:0;"><b>フロント</b>　佐藤加奈</p>
+    <h3 class="sub-ttl">直近の学会開催は</h3>
+    <ul class="recent">
+      <li>WASCON2027</li>
+      <li>ISO2028</li>
+      <li>ISDU2027</li>
+      <li>第38回機能性食品大会・総会</li>
+      <li>第24回基本関節学会</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 5画面目：ご相談 ===== -->
+<section id="contact">
+  <div class="wrap">
+    <h2 class="sec-ttl">まずは、開催概要をお聞かせください</h2>
+
+    <div class="talk-grid">
+      <div class="talk-card">
+        <div class="tc-ttl">ご相談ください</div>
+        <p>学会名、開催時期、開催都市、参加予定人数、必要な登録機能、など、分かる範囲で</p>
+      </div>
+      <div class="talk-card">
+        <div class="tc-ttl">お教えください</div>
+        <p>お困りごと、心配なこと、現在の準備状況、前回開催、など</p>
+      </div>
+      <div class="talk-card">
+        <div class="tc-ttl">これ大丈夫です</div>
+        <p>予算案作成、海外招へい、懇親会の会場予約、協賛金の募集、など</p>
+      </div>
     </div>
 
-    <div class="biz">
-      <p style="font-weight:800;color:var(--navy);margin:0 0 6px;">業務内容</p>
-      <p style="margin:0 0 4px;">制作　Ｗｅｂサイト：
-        研究室 5万円 <a href="https://science-web.co.jp/lab.trial/" target="_blank" rel="noopener">lab.trial</a>／
-        研究室 20万円 <a href="https://science-web.co.jp/20lab/" target="_blank" rel="noopener">20lab</a>／
-        学会 20万円 <a href="https://science-web.co.jp/gakkai/" target="_blank" rel="noopener">gakkai</a>／
-        研究費 20万円 <a href="https://science-web.co.jp/science" target="_blank" rel="noopener">science</a>
-      </p>
-      <p style="margin:0 0 4px;">開発　Ｗｅｂアプリ：
-        論文投稿 5万円 <a href="https://science-web.tokyo/ronbun.trial/" target="_blank" rel="noopener">ronbun.trial</a>／
-        論文投稿 20万円 <a href="https://science-web.tokyo/ronbun/" target="_blank" rel="noopener">ronbun</a>／
-        紀要管理 30万円 <a href="https://science-web.tokyo/bulletin/" target="_blank" rel="noopener">bulletin</a>／
-        役員選挙 20万円 <a href="https://science-web.tokyo/senkyo/" target="_blank" rel="noopener">senkyo</a>／
-        学会事務 20万円 <a href="https://science-web.tokyo/jimu/" target="_blank" rel="noopener">jimu</a>
-      </p>
-      <p style="margin:0;">開発　会議開催サポート：
-        フォーム 30万円 <a href="https://science-web.online/30venue/" target="_blank" rel="noopener">30venue</a>／
-        開催案内 40万円 <a href="https://science-web.online/40venue/" target="_blank" rel="noopener">40venue</a>
-      </p>
+    <div class="btns" style="margin-top:26px;">
+      <button class="btn btn-quote" data-open="m-basic">基本見積書ダウンロード<small>その場で作成・印刷</small></button>
+      <button class="btn btn-quote2" data-open="m-ref">最適見積書ダウンロード<small>希望項目を含めて計算</small></button>
+      <button class="btn btn-order" data-open="m-order">仕様書・発注書・請書<small>入力してそのまま送信</small></button>
+    </div>
+
+    <div class="company">
+      <h3 class="box-ttl">会社概要</h3>
+      <table class="tbl">
+        <tr><th style="width:26%">会社名</th><td>サイエンスウエブ株式会社</td></tr>
+        <tr><th>所在地</th><td>305-0051　茨城県つくば市二の宮１ー21ー11</td></tr>
+        <tr><th>代表取締役</th><td>丹野篤美</td></tr>
+        <tr><th>創業</th><td>2007年8月7日　科学技術の街　茨城県つくば市にて創業</td></tr>
+      </table>
+      <p class="ceo-txt">1975年、茨城県ひたちなか市生まれ。大学で物理学を専攻。ソフトウェア会社（HITACHI系）に勤務し、IT専門知識と経験を積む。Webサイト制作やWebシステム開発と運営管理を多数推進しました。研究者の事業を幅広くサポートしています。</p>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p style="margin:0 0 6px;">サイエンスウェブ株式会社</p>
-    <p style="margin:0;">Copyright © Science Web Inc. All Rights Reserved.</p>
+    <p class="ft-brand">サイエンスウェブ株式会社　ＳＷＯ</p>
+    <p class="ft-line">業務　<a class="ft-a" href="https://www.science-web.online/40venue" target="_blank" rel="noopener">https://www.science-web.online/40venue</a></p>
+    <p class="ft-line">電話　050-3538-7006（平日10時〜16時）</p>
+    <p class="ft-line">メール　swo-sign@science-web.online　佐藤加奈</p>
+    <ul class="ft-nav">
+      <li><a href="#top">トップ</a></li>
+      <li><a href="#price40">40万円</a></li>
+      <li><a href="#faq">ＦＡＱ</a></li>
+      <li><a href="#works">実績</a></li>
+      <li><a href="#contact">ご相談</a></li>
+    </ul>
+    <p class="ft-copy">＠SWO　Science Web Coop.</p>
   </div>
 </footer>
 
 <div class="sticky-cta no-print">
   <button class="s1" data-open="m-basic">基本見積書</button>
-  <button class="s3" data-open="m-ref">参考見積書</button>
+  <button class="s3" data-open="m-ref">最適見積書</button>
   <button class="s2" data-open="m-order">発注書</button>
 </div>
 
@@ -670,6 +748,11 @@ footer a{color:#cfe3f7;}
           <label class="lb">商品プラン<span class="req">必須</span></label>
           <div id="bs-plans"></div>
         </div>
+        <div class="fld">
+          <label class="lb">追加記載欄<span class="opt">任意・５行</span></label>
+          <p class="fld-note">合計金額と会社署名の間に印刷されます。空欄の行は印刷されません。</p>
+          <div id="bs-extra"></div>
+        </div>
       </div>
 
       <div id="bs-doc" style="display:none;"></div>
@@ -687,7 +770,7 @@ footer a{color:#cfe3f7;}
 <div class="modal" id="m-ref">
   <div class="modal-inner">
     <div class="modal-hd no-print">
-      <h2>参考見積書</h2>
+      <h2>最適見積書</h2>
       <button data-close aria-label="閉じる">×</button>
     </div>
     <div class="modal-bd">
@@ -713,6 +796,11 @@ footer a{color:#cfe3f7;}
           <label class="lb">希望項目（複数選択できます）</label>
           <div id="rf-opts"></div>
         </div>
+        <div class="fld">
+          <label class="lb">追加記載欄<span class="opt">任意・５行</span></label>
+          <p class="fld-note">合計金額と会社署名の間に印刷されます。空欄の行は印刷されません。</p>
+          <div id="rf-extra"></div>
+        </div>
       </div>
 
       <div id="rf-doc" style="display:none;"></div>
@@ -730,7 +818,7 @@ footer a{color:#cfe3f7;}
 <div class="modal" id="m-order">
   <div class="modal-inner">
     <div class="modal-hd no-print">
-      <h2>発注書</h2>
+      <h2>仕様書・発注書・請書</h2>
       <button data-close aria-label="閉じる">×</button>
     </div>
     <div class="modal-bd">
@@ -785,13 +873,13 @@ footer a{color:#cfe3f7;}
 "use strict";
 
 /* ====== 設定：商品プランと希望項目（変更はここだけ） ====== */
-var SEND_TO = "science-mail@science-web.online";
+var SEND_TO = "swo-order@science-web.online";
 /* 発注データの保存・通知先（Google Apps Script ウェブアプリ）
    ここに、デプロイ後の実際のURLを設定してください。未設定のままだと発注書は送信できません。 */
 var GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzzeiEymQY1dwFYONoiMNLFOihUswxB5X0SBNdHuyD793LqCGF0JaD1ST7q9je0h2mQ/exec";
 
 var PLANS = [
-  {name:"開催案内サポート", desc:"開催案内Webサイト＋演題登録フォーム＋参加登録フォーム", price:400000}
+  {name:"プレミアムプラン", desc:"開催案内ホームページ10画面＋演題登録フォーム＋参加登録フォーム", price:400000}
 ];
 
 var OPTIONS = [
@@ -799,16 +887,26 @@ var OPTIONS = [
   {name:"サーバー利用料",        unit:"／年", price:70000, note:"閉会後２か月間有効。"},
   {name:"保守管理の業務契約",     unit:"／月", price:10000, note:"サーバー・ドメイン管理、バックアップ、障害対応。"},
   {name:"運用代行の業務契約",     unit:"／月", price:10000, note:"掲載と更新、整備、更新支援。月５回まで。"},
-  {name:"カード決済手数料",       unit:"／月", price:10000, note:"ＶＩＳＡ・ＭＡＳＴＥＲ・ＪＣＢ。カード手数料５％。"}
+  {name:"カード決済手数料",       unit:"／月", price:10000, note:"ＶＩＳＡ・ＭＡＳＴＥＲ・ＪＣＢ。カード手数料５％。"},
+  {name:"企業協賛募集要項",       unit:"／一式", price:50000, note:"スポンサー募集ページの制作。"}
 ];
 
 var COMPANY = {
-  name:"サイエンスウェブ株式会社",
-  addr:"茨城県つくば市二の宮",
+  name:"サイエンスウエブ株式会社",
+  addr:"305-0051　茨城県つくば市二の宮１ー21ー11",
   tel:"050-3538-7006",
-  mail:"science-mail@science-web.online",
+  mail:"swo-sign@science-web.online",
   ceo:"丹野篤美",
   front:"佐藤加奈"
+};
+
+/* 各ボタンの宛先 */
+var MAILTO = {
+  soudan : "swo-mail@science-web.online",
+  zoom   : "swo-zoom@science-web.online",
+  kihon  : "swo-kihon@science-web.online",
+  saiteki: "swo-saiteki@science-web.online",
+  order  : "swo-order@science-web.online"
 };
 
 /* ====== ユーティリティ ====== */
@@ -869,6 +967,30 @@ function getChecks(groupName){
 }
 
 /* ====== 帳票パーツ ====== */
+/* ====== 追加記載欄（画面入力・５行） ====== */
+function renderExtra(box, prefix){
+  var h='';
+  for(var i=1;i<=5;i++){
+    h += '<div class="ex-row">'
+       + '<input type="text" id="'+prefix+'-ex-l'+i+'" class="ex-l" placeholder="項目名（'+i+'行目）">'
+       + '<input type="text" id="'+prefix+'-ex-v'+i+'" class="ex-v" placeholder="内容">'
+       + '</div>';
+  }
+  box.innerHTML = h;
+}
+function extraRows(prefix){
+  var out='';
+  for(var i=1;i<=5;i++){
+    var l=$(prefix+"-ex-l"+i), v=$(prefix+"-ex-v"+i);
+    var lv = l ? l.value.replace(/^\s+|\s+$/g,"") : "";
+    var vv = v ? v.value.replace(/^\s+|\s+$/g,"") : "";
+    if(lv || vv){
+      out += '<tr><th style="width:34%">'+esc(lv)+'</th><td>'+esc(vv)+'</td></tr>';
+    }
+  }
+  return out ? '<table class="doc-extra">'+out+'</table>' : '';
+}
+
 function fromBlock(){
   return '<div class="doc-from"><b>'+esc(COMPANY.name)+'</b>'
        + esc(COMPANY.addr)+'<br>'
@@ -879,6 +1001,7 @@ function fromBlock(){
 
 /* ====== 7-1．基本見積書 ====== */
 renderPlans($("bs-plans"),"bs-plan");
+renderExtra($("bs-extra"),"bs");
 
 $("bs-make").addEventListener("click", function(){
   var org=$("bs-org").value.replace(/^\s+|\s+$/g,"");
@@ -903,7 +1026,8 @@ $("bs-make").addEventListener("click", function(){
     + '<tr><th>消費税（10％）</th><td class="r">'+yen(tax)+'</td></tr>'
     + '<tr><th>合計金額（税込）</th><td class="r"><b>'+yen(p.price+tax)+'</b></td></tr>'
     + '</table>'
-    + '<p class="doc-remark">・本見積はパック商品の基本金額です。希望項目（アドオン）を含むお見積は「参考見積書」にて作成いただけます。<br>'
+    + extraRows("bs")
+    + '<p class="doc-remark">・本見積はパック商品の基本金額です。希望項目（アドオン）を含むお見積は「最適見積書」にて作成いただけます。<br>'
     + '・有効期限　発行日より30日間。<br>'
     + '・納期　入稿完了から３週間以内に公開。</p>'
     + fromBlock()
@@ -926,6 +1050,7 @@ $("bs-print").addEventListener("click", function(){ window.print(); });
 /* ====== 7-2．参考見積書 ====== */
 renderPlans($("rf-plans"),"rf-plan");
 renderOptions($("rf-opts"),"rf-opt");
+renderExtra($("rf-extra"),"rf");
 
 $("rf-make").addEventListener("click", function(){
   var org=$("rf-org").value.replace(/^\s+|\s+$/g,"");
@@ -948,7 +1073,7 @@ $("rf-make").addEventListener("click", function(){
 
   $("rf-doc").innerHTML =
     '<div class="doc doc-page">'
-    + '<h3 class="doc-ttl">参考見積書</h3>'
+    + '<h3 class="doc-ttl">最適見積書</h3>'
     + '<p class="doc-date">見積番号　'+esc(docNo("R"))+'<br>発行日　'+esc(today())+'</p>'
     + '<p class="doc-to">'+esc(org)+'　'+esc(nm)+'<small>様</small></p>'
     + '<div class="doc-total"><b>お見積金額（税込）</b><span>'+yen(sub+tax)+'</span></div>'
@@ -964,6 +1089,7 @@ $("rf-make").addEventListener("click", function(){
     + '<tr><th>消費税（10％）</th><td class="r">'+yen(tax)+'</td></tr>'
     + '<tr><th>合計金額（税込）</th><td class="r"><b>'+yen(sub+tax)+'</b></td></tr>'
     + '</table>'
+    + extraRows("rf")
     + '<p class="doc-remark">・本見積は概算です。仕様確定後に正式なお見積書を発行いたします。<br>'
     + '・希望項目は「／年」「／月」の単価で計上しています。契約期間により合計額は変動します。<br>'
     + '・有効期限　発行日より30日間。</p>'
@@ -1013,6 +1139,23 @@ $("od-next").addEventListener("click", function(){
   var tax=Math.floor(sub*0.1), total=sub+tax;
   var no=docNo("O");
 
+  /* 希望項目を１項目＝１行で出力（研究者が項目ごとに確認できるように） */
+  var optLines = '';
+  if(ops.length){
+    optLines = '<table class="opt-list">';
+    for(var k=0;k<ops.length;k++){
+      var oo=OPTIONS[ops[k]];
+      optLines += '<tr>'
+        + '<td style="width:26%">希望項目' + (k+1) + '</td>'
+        + '<td>' + esc(oo.name) + '</td>'
+        + '<td class="r" style="width:26%">' + yen(oo.price) + '<span style="font-size:11.5px;">' + esc(oo.unit) + '</span></td>'
+        + '</tr>';
+    }
+    optLines += '</table>';
+  } else {
+    optLines = '<table class="opt-list"><tr><td>なし</td></tr></table>';
+  }
+
   /* Ａ４縦３ページ構成：1枚目＝発注内容／2枚目＝内訳／3枚目＝ご確認事項 */
   $("od-doc").innerHTML =
     /* 1ページ目 */
@@ -1031,8 +1174,11 @@ $("od-next").addEventListener("click", function(){
     + '<div class="doc-sec-ttl">選択項目</div>'
     + '<table>'
     + '<tr><th style="width:34%">商品プラン</th><td>'+esc(p.name)+'　'+yen(p.price)+'（税抜）</td></tr>'
-    + '<tr><th>希望項目</th><td>'+(optNames.length? esc(optNames.join("／")) : "なし")+'</td></tr>'
-    + '<tr><th>合計金額（税込）</th><td class="r"><b>'+yen(total)+'</b></td></tr>'
+    + '</table>'
+    + '<div class="doc-sec-ttl">希望項目</div>'
+    + optLines
+    + '<table style="margin-top:10px;">'
+    + '<tr><th style="width:34%">合計金額（税込）</th><td class="r"><b>'+yen(total)+'</b></td></tr>'
     + '</table>'
     + fromBlock()
     + '</div>'
