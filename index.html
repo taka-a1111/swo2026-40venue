@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_40venue_ver3.3w-refined / 2026-08-13 -->
+<!-- BUILD_TAG: swo2026_40venue_ver3.4w / 2026-08-13 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -716,6 +716,26 @@ footer{border-top:0;}
   .plan .price{font-size:50px;}
 }
 
+
+/* --- 画像エリア（納品後に差し替え） --- */
+.media-slot{
+  position:relative;margin:32px 0 0;border-radius:5px;overflow:hidden;
+  aspect-ratio:16/7;background:var(--wash);
+  border:1px dashed #B9C4D0;
+  display:flex;align-items:center;justify-content:center;
+}
+.media-slot img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity .8s ease;
+}
+.media-slot img:only-of-type,.media-slot img.on{opacity:1;}
+.media-slot:has(img){border:1px solid var(--rule);background:#fff;}
+.media-slot:has(img) .ms-note{display:none;}
+.ms-note{
+  font-size:12px;letter-spacing:.14em;color:#8A97A6;font-weight:700;
+}
+@media (max-width:760px){ .media-slot{aspect-ratio:4/3;} }
+
 </style>
 </head>
 <body>
@@ -833,6 +853,22 @@ footer{border-top:0;}
       <button class="btn btn-quote" data-open="m-basic">基本見積書ダウンロード<small>その場で作成・印刷</small></button>
       <button class="btn btn-quote2" data-open="m-ref">最適見積書ダウンロード<small>希望項目を含めて計算</small></button>
       <button class="btn btn-order" data-open="m-order">仕様書・発注書・請書<small>入力してそのまま送信</small></button>
+    </div>
+
+    <!-- ===================================================================
+         画像エリア（納品後に差し替え）
+         下の <div class="media-slot"> の中身を、画像タグに置き換えてください。
+
+         １点のみ掲載する場合：
+           <img src="images/conference01.jpg" alt="学会会場の様子">
+
+         ２点をスライドショーにする場合：
+           <img src="images/conference01.jpg" alt="学会会場の様子" class="on">
+           <img src="images/conference02.jpg" alt="質疑応答の様子">
+           ※ class="on" が最初に表示される１枚です。５秒ごとに切り替わります。
+         =================================================================== -->
+    <div class="media-slot" id="mediaSlot">
+      <span class="ms-note">画像エリア</span>
     </div>
 
     <div class="basic-link">
@@ -978,7 +1014,7 @@ footer{border-top:0;}
         <tr><th style="width:26%">会社名</th><td>サイエンスウェブ株式会社</td></tr>
         <tr><th>所在地</th><td>305-0051　茨城県つくば市二の宮１ー21ー11</td></tr>
         <tr><th>代表取締役</th><td>丹野篤美</td></tr>
-        <tr><th>創業</th><td>2007年8月7日　科学技術の街　茨城県つくば市にて創業</td></tr>
+        <tr><th>創業</th><td>1997年8月7日　科学技術の街　茨城県つくば市にて創業</td></tr>
       </table>
       <p class="ceo-txt">1975年、茨城県ひたちなか市生まれ。大学で物理学を専攻。ソフトウェア会社（HITACHI系）に勤務し、IT専門知識と経験を積む。Webサイト制作やWebシステム開発と運営管理を多数推進しました。研究者の事業を幅広くサポートしています。</p>
     </div>
@@ -1675,6 +1711,21 @@ for(var j=0;j<links.length;j++){
   });
 }
 
+})();
+
+/* 画像エリア：２枚以上あれば５秒ごとに切り替える */
+(function(){
+  var slot=document.getElementById("mediaSlot");
+  if(!slot) return;
+  var imgs=slot.querySelectorAll("img");
+  if(imgs.length<2) return;
+  var i=0;
+  imgs[0].classList.add("on");
+  setInterval(function(){
+    imgs[i].classList.remove("on");
+    i=(i+1)%imgs.length;
+    imgs[i].classList.add("on");
+  },5000);
 })();
 </script>
 </body>
