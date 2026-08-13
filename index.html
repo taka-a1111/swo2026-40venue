@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_40venue_ver2.6w / 2026-08-13 -->
+<!-- BUILD_TAG: swo2026_40venue_ver3.3w-refined / 2026-08-13 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -9,9 +9,9 @@
 <style>
 /* ============ 基本 ============ */
 :root{
-  --navy:#004080;
-  --navy-d:#00305f;
-  --navy-l:#e8f0f8;
+  --navy:#0F62B4;
+  --navy-d:#0A4B8C;
+  --navy-l:#EAF3FC;
   --accent:#ff9800;
   --accent-d:#e68a00;
   --red:#ff0000;
@@ -74,19 +74,29 @@ header{
 }
 .hero-lead{font-size:14px;opacity:.92;margin:0 0 14px;}
 .hero h1{
-  font-size:40px;line-height:1.32;margin:0 0 6px;font-weight:900;letter-spacing:.01em;
+  font-size:44px;line-height:1.28;margin:0 0 6px;font-weight:900;letter-spacing:.02em;
   color:var(--ink);
 }
+.hero h1 .dot{color:var(--navy);font-size:16px;margin:0 14px;vertical-align:middle;opacity:.55;}
 .hero h1 .sub{display:block;font-size:19px;font-weight:700;color:var(--navy);margin-bottom:8px;}
 .hero-price{
   display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 8px;
 }
 .hero-card{
-  flex:1 1 240px;background:var(--navy);color:#fff;
-  border:1px solid var(--navy);border-radius:12px;padding:20px 24px;
-  box-shadow:0 6px 22px rgba(0,64,128,.18);
+  flex:1 1 100%;background:var(--navy);color:#fff;
+  border:1px solid var(--navy);border-radius:14px;padding:26px 34px;
+  box-shadow:0 8px 26px rgba(15,98,180,.22);
+  display:flex;align-items:center;gap:34px;
 }
-.hero-card .p{font-size:38px;font-weight:900;color:var(--yellow);line-height:1.2;}
+.hero-card .hc-left{flex:1 1 0;min-width:0;}
+.hero-card .hc-right{flex:1 1 0;min-width:0;}
+.hero-card .hc-sep{flex:0 0 1px;align-self:stretch;background:rgba(255,255,255,.28);margin:4px 0;}
+.hero-card .n{font-size:15px;font-weight:700;opacity:.95;margin-bottom:2px;letter-spacing:.02em;}
+.hero-card .p{font-weight:900;color:var(--yellow);line-height:1;display:flex;align-items:baseline;gap:0 2px;}
+.hero-card .p-pre{font-size:34px;}
+.hero-card .p-num{font-size:96px;letter-spacing:-.03em;}
+.hero-card .p-unit{font-size:42px;}
+.hero-card .p-tax{font-size:14px;font-weight:700;color:#fff;opacity:.92;margin-top:4px;}
 .hero-card .n{font-size:15px;font-weight:700;margin-bottom:4px;}
 .hero-card .d{font-size:13px;opacity:.92;line-height:1.6;}
 .hero-tags{font-size:13px;opacity:.9;margin:14px 0 0;}
@@ -97,7 +107,12 @@ header{
 @media (max-width:700px){
   .hero h1{font-size:25px;}
   .hero h1 .sub{font-size:16px;}
-  .hero-card .p{font-size:26px;}
+  .hero-card{flex-direction:column;align-items:flex-start;gap:16px;padding:22px 24px;}
+  .hero-card .hc-sep{flex:0 0 1px;width:100%;height:1px;align-self:auto;margin:0;}
+  .hero-card .p-pre{font-size:24px;}
+  .hero-card .p-num{font-size:62px;}
+  .hero-card .p-unit{font-size:28px;}
+  .hero-card .p-tax{font-size:13px;}
 }
 
 /* ============ 共通セクション ============ */
@@ -252,6 +267,21 @@ section:nth-of-type(even){background:var(--bg);}
 @media (max-width:560px){
   .ex-row{flex-direction:column;gap:5px;}
   .ex-row .ex-l{flex:1 1 auto;}
+}
+
+/* 見積書の注意事項 */
+.doc .doc-note{margin:14px 0 0;padding-left:1.4em;font-size:11.5pt;line-height:1.75;}
+.doc .doc-note > li{margin-bottom:3px;}
+.doc .doc-note-items{list-style:none;margin:6px 0 8px;padding:8px 10px;border:1px solid #ccc;border-radius:3px;}
+.doc .doc-note-items li{display:flex;flex-wrap:wrap;gap:2px 10px;padding:3px 0;border-bottom:1px dotted #ddd;font-size:10.5pt;}
+.doc .doc-note-items li:last-child{border-bottom:0;}
+.doc .ni-n{flex:0 0 30%;font-weight:700;}
+.doc .ni-p{flex:0 0 22%;text-align:right;}
+.doc .ni-d{flex:1 1 100%;font-size:9.5pt;color:#555;padding-left:1em;}
+@media print{
+  .doc .doc-note{font-size:9.5pt;line-height:1.55;}
+  .doc .doc-note-items li{font-size:8.8pt;padding:1.5px 0;}
+  .doc .ni-d{font-size:8pt;}
 }
 
 .ft-brand{margin:0 0 8px;font-weight:800;font-size:15px;}
@@ -485,6 +515,207 @@ footer a{color:#cfe3f7;}
   .doc .doc-from b{font-size:11pt;}
   .doc-page{page-break-inside:auto;}
 }
+
+/* ============================================================
+   洗練パス：装飾を引き、罫線と余白と数字で構成する
+   研究者・大学向けの資料然とした精度を目指す
+   ============================================================ */
+
+:root{
+  --ink:#14181D;
+  --ink-2:#4A5460;
+  --rule:#D9DFE5;        /* ヘアライン */
+  --rule-2:#EDF1F5;      /* さらに薄い区切り */
+  --wash:#F7F9FB;        /* セクションの地 */
+  --navy-ink:#0A3D6E;    /* 見出し用の濃い青 */
+}
+
+/* --- 文字組み ------------------------------------------------ */
+body{
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic Medium","Noto Sans JP",
+              -apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:.02em;
+  line-height:1.85;
+  background:#fff;
+}
+/* 数字は等幅で桁を揃える（金額表に効く） */
+.p-num,.p-unit,.p-pre,.st-num,.price,.num,.doc-total span,
+table.tbl td.num,.doc td.r,.amt{
+  font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1;
+}
+
+/* --- 余白のリズム（8の倍数で統一） -------------------------- */
+section{padding:92px 0;}
+section + section{border-top:1px solid var(--rule-2);}
+#price40,#works{background:var(--wash);}
+#faq,#contact{background:#fff;}
+
+/* --- 見出し：眉ラベルを線ではなく文字で ---------------------- */
+.sec-ttl{
+  font-size:27px;font-weight:800;color:var(--ink);
+  letter-spacing:.03em;line-height:1.45;
+  margin:0 0 10px;padding:0;border:0;
+}
+.sec-ttl::before{
+  content:"";display:block;width:34px;height:2px;
+  background:var(--navy);margin-bottom:20px;
+}
+.sec-desc{font-size:14.5px;color:var(--ink-2);margin:0 0 40px;line-height:1.9;}
+.sub-ttl{
+  font-size:15px;font-weight:800;color:var(--navy-ink);
+  letter-spacing:.08em;margin:44px 0 16px;
+  padding:0 0 10px;border-left:0;border-bottom:1px solid var(--rule);
+}
+
+/* --- 面と影を減らし、罫線で立たせる -------------------------- */
+.plan,.work-card,.org,.talk-card,.addon,.freebox,.company,
+.worries li,.qa dd,.recent li,.free li{
+  box-shadow:none;
+  border-radius:5px;
+}
+.stat{box-shadow:none;}
+
+/* --- ヒーロー ------------------------------------------------- */
+.hero{padding:76px 0 68px;border-bottom:1px solid var(--rule);}
+.hero h1{font-size:46px;line-height:1.3;letter-spacing:.035em;}
+.hero h1 .sub{
+  font-size:14px;font-weight:800;color:var(--navy-ink);
+  letter-spacing:.14em;margin-bottom:20px;
+}
+.hero h1 .dot{opacity:.4;margin:0 18px;}
+
+/* 価格ブロックは仕様書の組版に寄せる */
+.hero-card{
+  border-radius:6px;box-shadow:none;
+  padding:32px 40px;gap:0;
+  border:1px solid var(--navy);
+}
+.hero-card .hc-left{padding-right:40px;}
+.hero-card .hc-right{padding-left:40px;}
+.hero-card .hc-sep{background:rgba(255,255,255,.24);}
+.hero-card .n{
+  font-size:12px;font-weight:800;letter-spacing:.16em;
+  opacity:.82;margin-bottom:10px;
+}
+.hero-card .p-num{font-size:92px;letter-spacing:-.045em;}
+.hero-card .p-unit{font-size:38px;letter-spacing:.02em;}
+.hero-card .p-pre{font-size:30px;letter-spacing:.02em;}
+.hero-card .p-tax{font-size:12px;letter-spacing:.1em;opacity:.8;margin-top:8px;}
+
+/* --- 悩みリスト：チェックを控えめに -------------------------- */
+.worries li{
+  border:1px solid var(--rule);padding:15px 16px 15px 42px;
+  font-size:14.5px;line-height:1.8;background:#fff;
+}
+.worries li:before{color:var(--navy);font-weight:700;font-size:13px;top:15px;left:16px;}
+.answer-box{border-radius:6px;padding:30px 32px;}
+.answer-ttl{font-size:20px;letter-spacing:.04em;}
+.answer-txt{font-size:14.5px;}
+
+/* --- 料金 ----------------------------------------------------- */
+.plan{border:1px solid var(--rule);padding:32px 34px;background:#fff;}
+.plan.rec{border:1px solid var(--navy);}
+.plan h3{font-size:19px;letter-spacing:.05em;margin:14px 0 6px;}
+.plan .price{font-size:60px;line-height:1;letter-spacing:-.03em;}
+.plan .price small{font-size:22px;letter-spacing:.02em;}
+.plan .tax{font-size:12px;letter-spacing:.08em;color:var(--ink-2);margin-top:6px;}
+.plan-badge{
+  border-radius:3px;font-size:11px;letter-spacing:.12em;padding:5px 12px;font-weight:800;
+}
+.plan .spec th,.plan .spec td{
+  border-bottom:1px solid var(--rule-2);padding:11px 2px;font-size:13.5px;
+}
+.plan .term{background:var(--wash);border:1px solid var(--rule-2);border-radius:4px;font-size:12.5px;}
+
+.box-ttl{font-size:14px;font-weight:800;letter-spacing:.1em;color:var(--navy-ink);margin-bottom:16px;}
+.addon,.freebox,.company{border:1px solid var(--rule);padding:26px 28px;background:#fff;}
+.freebox{background:#fff;border-color:var(--rule);}
+.free li{border:1px solid var(--rule);background:#fff;padding:18px 12px;}
+.free li b{font-size:22px;color:var(--navy);margin-top:8px;}
+table.tbl th,table.tbl td{border:1px solid var(--rule);padding:12px 14px;font-size:14px;}
+table.tbl th{background:var(--wash);font-weight:800;}
+
+.basic-link{
+  border:1px solid var(--navy);border-style:solid;border-radius:5px;
+  padding:20px 24px;background:#fff;
+}
+.bl-price{font-size:26px;letter-spacing:-.02em;}
+.bl-btn{border-radius:4px;font-size:13px;letter-spacing:.05em;padding:11px 20px;}
+
+/* --- ＦＡＱ --------------------------------------------------- */
+.points li{border:1px solid var(--rule);background:#fff;}
+.qa dt{font-size:15px;letter-spacing:.03em;margin-top:22px;}
+.qa dd{border:1px solid var(--rule);font-size:14px;line-height:1.9;background:#fff;}
+
+/* --- 実績：青の面を減らし、数字を主役に ---------------------- */
+.stats{gap:0;border-top:2px solid var(--navy);border-bottom:1px solid var(--rule);}
+.stat{
+  background:#fff;color:var(--ink);border-radius:0;
+  border-right:1px solid var(--rule-2);
+  padding:30px 24px;text-align:left;
+}
+.stat:last-child{border-right:0;}
+.st-num{font-size:52px;color:var(--navy);letter-spacing:-.03em;line-height:1;}
+.st-num span{font-size:15px;color:var(--ink);margin-left:6px;font-weight:800;}
+.st-lbl{font-size:12.5px;color:var(--ink-2);margin-top:12px;letter-spacing:.04em;}
+
+.org{border:1px solid var(--rule);padding:24px 26px;background:#fff;}
+.og-ttl{
+  background:transparent;color:var(--navy-ink);padding:0 0 10px;
+  border-bottom:1px solid var(--rule);border-radius:0;
+  font-size:12px;letter-spacing:.12em;display:block;margin-bottom:14px;
+}
+.og-tags li{
+  background:#fff;border:1px solid var(--rule);color:var(--ink);
+  border-radius:3px;font-size:12.5px;font-weight:600;padding:6px 12px;
+}
+.recent li{
+  background:#fff;border:1px solid var(--rule);border-left:2px solid var(--navy);
+  border-radius:3px;font-size:13.5px;color:var(--ink);letter-spacing:.03em;
+}
+
+/* --- ご相談 --------------------------------------------------- */
+.talk-card{border:1px solid var(--rule);padding:24px 26px;background:#fff;}
+.tc-ttl{
+  font-size:14px;letter-spacing:.08em;color:var(--navy-ink);
+  border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:12px;
+}
+.talk-card p{font-size:13.5px;line-height:1.9;color:var(--ink-2);}
+.ceo-txt{font-size:13px;line-height:1.95;}
+
+/* --- ボタン --------------------------------------------------- */
+.btn{border-radius:4px;letter-spacing:.04em;box-shadow:none;}
+.btn small{letter-spacing:.02em;opacity:.86;}
+.sticky-cta{border-top:1px solid rgba(255,255,255,.16);}
+.sticky-cta button{border-radius:4px;letter-spacing:.06em;}
+
+/* --- ヘッダー・フッター --------------------------------------- */
+header{box-shadow:none;border-bottom:1px solid var(--rule);}
+header.scrolled{border-bottom:2px solid var(--navy);}
+.gnav a{font-size:13px;letter-spacing:.06em;}
+footer{border-top:0;}
+.ft-brand{letter-spacing:.06em;}
+.ft-line{font-size:13px;letter-spacing:.03em;}
+.ft-nav a{font-size:13px;letter-spacing:.05em;}
+
+/* --- モバイル ------------------------------------------------- */
+@media (max-width:760px){
+  section{padding:60px 0;}
+  .hero{padding:52px 0 48px;}
+  .hero h1{font-size:31px;letter-spacing:.02em;}
+  .hero h1 .dot{margin:0 12px;}
+  .sec-ttl{font-size:22px;}
+  .stats{border-bottom:0;}
+  .stat{border-right:0;border-bottom:1px solid var(--rule-2);padding:24px 18px;}
+  .stat:last-child{border-bottom:0;}
+  .st-num{font-size:44px;}
+  .plan{padding:26px 22px;}
+  .plan .price{font-size:50px;}
+}
+
 </style>
 </head>
 <body>
@@ -510,13 +741,21 @@ footer a{color:#cfe3f7;}
   <div class="wrap">
     <h1>
       <span class="sub">学会・国際会議の開催準備のお悩みを解決します</span>
-      開催案内、演題登録、<br>参加登録、カード決済
+      <span class="kw">開催案内</span><span class="dot">●</span><span class="kw">演題登録</span><br><span class="kw">参加登録</span><span class="dot">●</span><span class="kw">カード決済</span>
     </h1>
     <div class="hero-price">
       <div class="hero-card">
-        <div class="n">プレミアムプラン</div>
-        <div class="p">基本40万円<small style="font-size:15px;font-weight:700;">（税別）</small></div>
-        <div class="d">入稿完了から３週間で公開！</div>
+        <div class="hc-left">
+          <div class="n">プレミアムプラン</div>
+          <div class="p"><span class="p-pre">基本</span><span class="p-num">40</span><span class="p-unit">万円</span></div>
+          <div class="p-tax">（税別）</div>
+        </div>
+        <div class="hc-sep" aria-hidden="true"></div>
+        <div class="hc-right">
+          <div class="n">入稿完了から</div>
+          <div class="p"><span class="p-num">3</span><span class="p-unit">週間</span></div>
+          <div class="p-tax">で公開！</div>
+        </div>
       </div>
     </div>
   </div>
@@ -791,11 +1030,6 @@ footer a{color:#cfe3f7;}
           <label class="lb">商品プラン<span class="req">必須</span></label>
           <div id="bs-plans"></div>
         </div>
-        <div class="fld">
-          <label class="lb">追加記載欄<span class="opt">任意・５行</span></label>
-          <p class="fld-note">合計金額と会社署名の間に印刷されます。空欄の行は印刷されません。</p>
-          <div id="bs-extra"></div>
-        </div>
       </div>
 
       <div id="bs-doc" style="display:none;"></div>
@@ -838,11 +1072,6 @@ footer a{color:#cfe3f7;}
         <div class="fld">
           <label class="lb">希望項目（複数選択できます）</label>
           <div id="rf-opts"></div>
-        </div>
-        <div class="fld">
-          <label class="lb">追加記載欄<span class="opt">任意・５行</span></label>
-          <p class="fld-note">合計金額と会社署名の間に印刷されます。空欄の行は印刷されません。</p>
-          <div id="rf-extra"></div>
         </div>
       </div>
 
@@ -926,13 +1155,50 @@ var PLANS = [
 ];
 
 var OPTIONS = [
-  {name:"ドメイン登録料",        unit:"／年", price:10000, note:"閉会後２か月間有効。"},
-  {name:"サーバー利用料",        unit:"／年", price:70000, note:"閉会後２か月間有効。"},
-  {name:"保守管理の業務契約",     unit:"／月", price:10000, note:"サーバー・ドメイン管理、バックアップ、障害対応。"},
-  {name:"運用代行の業務契約",     unit:"／月", price:10000, note:"掲載と更新、整備、更新支援。月５回まで。"},
-  {name:"カード決済手数料",       unit:"／月", price:10000, note:"ＶＩＳＡ・ＭＡＳＴＥＲ・ＪＣＢ。カード手数料５％。"},
-  {name:"企業協賛募集要項",       unit:"／一式", price:50000, note:"スポンサー募集ページの制作。"}
+  {name:"ドメイン登録料",       unit:"／年", price:10000, rate:0, note:"閉会後２か月間有効です。"},
+  {name:"サーバー利用料",       unit:"／年", price:70000, rate:0, note:"閉会後２か月間有効です。"},
+  {name:"協賛金募集要項",       unit:"／式", price:50000, rate:0, note:"企業・自治体に対応します。和文。"},
+  {name:"カード会社手数料",     unit:"／件", price:0,     rate:5, note:"ＶＩＳＡ・ＭＡＳＴＥＲ・ＪＣＢ、など。"},
+  {name:"カード決事務代行料",   unit:"／月", price:10000, rate:0, note:"クリアメンバーズ"},
+  {name:"運用代行の業務契約",   unit:"／月", price:10000, rate:0, note:"修正と更新、整備、登録者メール対応。月５回まで。"},
+  {name:"保守管理の業務契約",   unit:"／月", price:10000, rate:0, note:"サーバ・ドメイン管理、バックアップ、障害対応。"}
 ];
+
+/* 見積書の合計額の下、会社署名欄の上に入る注意事項 */
+var NOTE_BASIC = [
+  "基本見積額40万円は、固定額です。",
+  "この基本見積書は、弊社に送信いたしません。",
+  "画面プリントし「資料」として保存を願います。",
+  "下記７項目は、基本見積書40万円に含まれておりません。",
+  "最適見積書にて希望項目を選択し自動加算いたします。"
+];
+var NOTE_OPT = [
+  "基本見積額40万円の固定額に、選択した希望項目を自動加算いたしました。",
+  "この最適見積書は、弊社に送信いたしません。",
+  "画面プリントして「資料」保存を願います。",
+  "メールとZoomヒアリングにて、詳細なご相談いたします。",
+  "追加ご相談は、メール・Zoomヒアリングにてお受けします。"
+];
+
+/* 注意事項ブロックを組み立てる */
+function noteBlock(list, withItems){
+  var h = '<ol class="doc-note">';
+  for(var i=0;i<list.length;i++){
+    h += '<li>' + esc(list[i]) + '</li>';
+    if(withItems && i === 3){
+      h += '<ul class="doc-note-items">';
+      for(var k=0;k<OPTIONS.length;k++){
+        var o = OPTIONS[k];
+        var amt = o.rate ? (o.rate + "％" + o.unit) : (yen(o.price) + o.unit);
+        h += '<li><span class="ni-n">' + esc(o.name) + '</span>'
+           + '<span class="ni-p">' + esc(amt) + '</span>'
+           + '<span class="ni-d">' + esc(o.note) + '</span></li>';
+      }
+      h += '</ul>';
+    }
+  }
+  return h + '</ol>';
+}
 
 var COMPANY = {
   name:"サイエンスウェブ株式会社",
@@ -988,12 +1254,15 @@ function renderPlans(container, groupName){
   }
   container.innerHTML=h;
 }
+/* 希望項目の金額表記（％項目は率で表示） */
+function optAmt(o){ return o.rate ? (o.rate + "％" + o.unit) : (yen(o.price) + o.unit); }
+
 function renderOptions(container, groupName){
   var h="";
   for(var i=0;i<OPTIONS.length;i++){
     h += '<label class="opt"><input type="checkbox" name="'+groupName+'" value="'+i+'">'
        + '<b>'+esc(OPTIONS[i].name)+'</b>'
-       + '<span class="amt">'+yen(OPTIONS[i].price)+esc(OPTIONS[i].unit)+'</span>'
+       + '<span class="amt">'+esc(optAmt(OPTIONS[i]))+'</span>'
        + '<span class="sm">'+esc(OPTIONS[i].note)+'</span></label>';
   }
   container.innerHTML=h;
@@ -1044,7 +1313,6 @@ function fromBlock(){
 
 /* ====== 7-1．基本見積書 ====== */
 renderPlans($("bs-plans"),"bs-plan");
-renderExtra($("bs-extra"),"bs");
 
 $("bs-make").addEventListener("click", function(){
   var org=$("bs-org").value.replace(/^\s+|\s+$/g,"");
@@ -1069,10 +1337,7 @@ $("bs-make").addEventListener("click", function(){
     + '<tr><th>消費税（10％）</th><td class="r">'+yen(tax)+'</td></tr>'
     + '<tr><th>合計金額（税込）</th><td class="r"><b>'+yen(p.price+tax)+'</b></td></tr>'
     + '</table>'
-    + extraRows("bs")
-    + '<p class="doc-remark">・本見積はパック商品の基本金額です。希望項目（アドオン）を含むお見積は「最適見積書」にて作成いただけます。<br>'
-    + '・有効期限　発行日より30日間。<br>'
-    + '・納期　入稿完了から３週間以内に公開。</p>'
+    + noteBlock(NOTE_BASIC, true)
     + fromBlock()
     + '</div>';
 
@@ -1093,7 +1358,6 @@ $("bs-print").addEventListener("click", function(){ window.print(); });
 /* ====== 7-2．最適見積書 ====== */
 renderPlans($("rf-plans"),"rf-plan");
 renderOptions($("rf-opts"),"rf-opt");
-renderExtra($("rf-extra"),"rf");
 
 $("rf-make").addEventListener("click", function(){
   var org=$("rf-org").value.replace(/^\s+|\s+$/g,"");
@@ -1109,8 +1373,13 @@ $("rf-make").addEventListener("click", function(){
   rows += '<tr><td>'+esc(p.name)+'　（'+esc(p.desc)+'）</td><td class="r">'+yen(p.price)+'</td></tr>';
   for(var i=0;i<ops.length;i++){
     var o=OPTIONS[ops[i]];
-    sub += o.price;
-    rows += '<tr><td>'+esc(o.name)+'<span style="font-size:11.5px;">'+esc(o.unit)+'</span></td><td class="r">'+yen(o.price)+'</td></tr>';
+    if(o.rate){
+      /* 料率の項目は件数により変動するため、合計には加算せず率を明記する */
+      rows += '<tr><td>'+esc(o.name)+'<span style="font-size:11.5px;">'+esc(o.unit)+'</span></td><td class="r">'+esc(o.rate)+'％<span style="font-size:11px;">（決済額に応じます）</span></td></tr>';
+    } else {
+      sub += o.price;
+      rows += '<tr><td>'+esc(o.name)+'<span style="font-size:11.5px;">'+esc(o.unit)+'</span></td><td class="r">'+yen(o.price)+'</td></tr>';
+    }
   }
   var tax=Math.floor(sub*0.1);
 
@@ -1132,10 +1401,7 @@ $("rf-make").addEventListener("click", function(){
     + '<tr><th>消費税（10％）</th><td class="r">'+yen(tax)+'</td></tr>'
     + '<tr><th>合計金額（税込）</th><td class="r"><b>'+yen(sub+tax)+'</b></td></tr>'
     + '</table>'
-    + extraRows("rf")
-    + '<p class="doc-remark">・本見積は概算です。仕様確定後に正式なお見積書を発行いたします。<br>'
-    + '・希望項目は「／年」「／月」の単価で計上しています。契約期間により合計額は変動します。<br>'
-    + '・有効期限　発行日より30日間。</p>'
+    + noteBlock(NOTE_OPT, false)
     + fromBlock()
     + '</div>';
 
@@ -1175,9 +1441,13 @@ $("od-next").addEventListener("click", function(){
   rows += '<tr><td>'+esc(p.name)+'　（'+esc(p.desc)+'）</td><td class="r">'+yen(p.price)+'</td></tr>';
   for(var i=0;i<ops.length;i++){
     var o=OPTIONS[ops[i]];
-    sub += o.price;
-    optNames.push(o.name+"（"+yen(o.price)+o.unit+"）");
-    rows += '<tr><td>'+esc(o.name)+'<span style="font-size:11.5px;">'+esc(o.unit)+'</span></td><td class="r">'+yen(o.price)+'</td></tr>';
+    optNames.push(o.name+"（"+optAmt(o)+"）");
+    if(o.rate){
+      rows += '<tr><td>'+esc(o.name)+'<span style="font-size:11.5px;">'+esc(o.unit)+'</span></td><td class="r">'+esc(o.rate)+'％<span style="font-size:11px;">（決済額に応じます）</span></td></tr>';
+    } else {
+      sub += o.price;
+      rows += '<tr><td>'+esc(o.name)+'<span style="font-size:11.5px;">'+esc(o.unit)+'</span></td><td class="r">'+yen(o.price)+'</td></tr>';
+    }
   }
   var tax=Math.floor(sub*0.1), total=sub+tax;
   var no=docNo("O");
@@ -1191,7 +1461,7 @@ $("od-next").addEventListener("click", function(){
       optLines += '<tr>'
         + '<td style="width:26%">希望項目' + (k+1) + '</td>'
         + '<td>' + esc(oo.name) + '</td>'
-        + '<td class="r" style="width:26%">' + yen(oo.price) + '<span style="font-size:11.5px;">' + esc(oo.unit) + '</span></td>'
+        + '<td class="r" style="width:26%">' + esc(optAmt(oo)) + '</td>'
         + '</tr>';
     }
     optLines += '</table>';
