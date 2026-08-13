@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_40venue_ver4.1w / 2026-08-13 -->
+<!-- BUILD_TAG: swo2026_40venue_ver4.2w / 2026-08-13 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -607,17 +607,18 @@ footer a{color:#cfe3f7;}
   body.doc-open .modal:not(.open){display:none!important;}
   body.doc-open .modal-inner{box-shadow:none!important;max-width:none!important;border-radius:0!important;margin:0!important;}
 
-  /* 印刷領域（Ａ４幅から余白を引いた実寸）に収める。ビューポート幅に追従させない */
+  /* 印刷領域いっぱいに広げる。固定幅にすると余白の設定次第で左右がずれるため */
   body.doc-open .modal,
   body.doc-open .modal-inner,
   body.doc-open .modal-bd,
   body.doc-open .doc,
   body.doc-open .doc-page{
-    width:186mm!important;max-width:186mm!important;
+    width:100%!important;max-width:100%!important;
     margin-left:0!important;margin-right:0!important;
+    padding-left:0!important;padding-right:0!important;
     box-sizing:border-box!important;
   }
-  body.doc-open .doc table{width:100%!important;max-width:186mm!important;table-layout:fixed;}
+  body.doc-open .doc table{width:100%!important;max-width:100%!important;table-layout:fixed;}
   body.doc-open .doc table th,body.doc-open .doc table td{
     word-break:break-word;overflow-wrap:anywhere;
   }
