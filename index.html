@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_40venue_ver3.8w / 2026-08-13 -->
+<!-- BUILD_TAG: swo2026_40venue_ver4.1w / 2026-08-13 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -114,7 +114,7 @@
 html{scroll-behavior:smooth;}
 body{
   margin:0;
-  font-family:"Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Yu Gothic Medium",Meiryo,"MS PGothic","Noto Sans JP",sans-serif;
+  font-family:"Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,"Noto Sans JP","Noto Sans CJK JP","IPAPGothic","MS PGothic",sans-serif;
   color:var(--ink);
   background:var(--white);
   line-height:1.75;
@@ -587,12 +587,41 @@ footer a{color:#cfe3f7;}
 
 /* ============ 印刷 ============ */
 @media print{
-  @page{size:A4 portrait;margin:14mm 12mm;}
+  @page{size:A4 portrait;margin:12mm;}
   body{padding:0!important;background:#fff!important;}
-  header,.hero,section,footer,.sticky-cta,.modal-hd,.modal-ft,.steps,.no-print{display:none!important;}
-  .modal{position:static!important;display:block!important;background:#fff!important;padding:0!important;overflow:visible!important;}
-  .modal:not(.open){display:none!important;}
-  .modal-inner{box-shadow:none!important;max-width:none!important;border-radius:0!important;margin:0!important;}
+  .sticky-cta,.no-print{display:none!important;}
+
+  /* 通常のページ印刷：ページ全体をそのまま出す */
+  body:not(.doc-open) .modal{display:none!important;}
+  body:not(.doc-open) section,body:not(.doc-open) .hero,
+  body:not(.doc-open) .plan,body:not(.doc-open) .org,
+  body:not(.doc-open) .talk-card,body:not(.doc-open) .stat,
+  body:not(.doc-open) .media-slot{break-inside:avoid;page-break-inside:avoid;}
+  body:not(.doc-open) header{position:static!important;}
+
+  /* 帳票を開いているとき：その帳票だけを出す */
+  body.doc-open header,body.doc-open .hero,body.doc-open section,
+  body.doc-open footer,body.doc-open .modal-hd,body.doc-open .modal-ft,
+  body.doc-open .steps{display:none!important;}
+  body.doc-open .modal{position:static!important;display:block!important;background:#fff!important;padding:0!important;overflow:visible!important;}
+  body.doc-open .modal:not(.open){display:none!important;}
+  body.doc-open .modal-inner{box-shadow:none!important;max-width:none!important;border-radius:0!important;margin:0!important;}
+
+  /* 印刷領域（Ａ４幅から余白を引いた実寸）に収める。ビューポート幅に追従させない */
+  body.doc-open .modal,
+  body.doc-open .modal-inner,
+  body.doc-open .modal-bd,
+  body.doc-open .doc,
+  body.doc-open .doc-page{
+    width:186mm!important;max-width:186mm!important;
+    margin-left:0!important;margin-right:0!important;
+    box-sizing:border-box!important;
+  }
+  body.doc-open .doc table{width:100%!important;max-width:186mm!important;table-layout:fixed;}
+  body.doc-open .doc table th,body.doc-open .doc table td{
+    word-break:break-word;overflow-wrap:anywhere;
+  }
+  body.doc-open .doc img{max-width:100%!important;height:auto!important;}
   .modal-bd{padding:0!important;}
   .doc{border:0!important;padding:0!important;font-size:10pt;line-height:1.55;}
   .doc h3.doc-ttl{font-size:18pt;margin-bottom:4px;padding-bottom:5px;}
@@ -626,7 +655,8 @@ footer a{color:#cfe3f7;}
 
 /* --- 文字組み ------------------------------------------------ */
 body{
-  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic Medium","Noto Sans JP",
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",
+              Meiryo,"Noto Sans JP","Noto Sans CJK JP","IPAPGothic",
               -apple-system,"Segoe UI",sans-serif;
   color:var(--ink);
   -webkit-font-smoothing:antialiased;
@@ -1783,6 +1813,8 @@ function openModal(id, planIndex){
   if(!m) return;
   m.className="modal open";
   document.body.style.overflow="hidden";
+  /* 帳票を開いている間は、印刷時にその帳票だけを出す */
+  document.body.className = (document.body.className.replace(/\s*doc-open/g,"") + " doc-open").replace(/^\s+/,"");
   if(planIndex!=null && planIndex!==""){
     var g = id==="m-basic" ? "bs-plan" : (id==="m-ref" ? "rf-plan" : "od-plan");
     var r=document.getElementsByName(g);
@@ -1792,6 +1824,10 @@ function openModal(id, planIndex){
 function closeModal(m){
   m.className="modal";
   document.body.style.overflow="";
+  /* 開いている帳票が他になければ、通常のページ印刷に戻す */
+  if(!document.querySelector(".modal.open")){
+    document.body.className = document.body.className.replace(/\s*doc-open/g,"");
+  }
 }
 function bindClose(){
   var bs=document.querySelectorAll("[data-close]");
