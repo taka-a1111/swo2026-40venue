@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_40venue_ver4.5w / 2026-08-14 -->
+<!-- BUILD_TAG: swo2026_40venue_ver4.7w / 2026-08-15 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -366,6 +366,10 @@ section:nth-of-type(even){background:var(--bg);}
 .doc .doc-note-sub li:before{content:"・";}
 .doc .doc-note-sub li.no-mark:before{content:"";}
 .doc .doc-order-note{margin:14px 0 0;}
+.doc .doc-wakachi{margin:2px 0 4px;}
+.doc .doc-wakachi li{line-height:1.5;}
+.doc .doc-wakachi-note{margin:0 0 4px;font-size:12px;}
+
 .doc .doc-note-items li{display:flex;flex-wrap:wrap;gap:2px 10px;padding:3px 0;border-bottom:1px dotted #ddd;font-size:10.5pt;}
 .doc .doc-note-items li:last-child{border-bottom:0;}
 .doc .ni-n{flex:0 0 30%;font-weight:700;}
@@ -871,6 +875,18 @@ footer{border-top:0;}
 }
 @media (max-width:760px){ .media-slot{aspect-ratio:4/3;} }
 
+/* ===== 発注書3ページ目の印刷圧縮（末尾に置いて優先） ===== */
+@media print{
+  .doc-page-last .doc-sec-ttl{margin:6px 0 4px!important;padding:3px 10px!important;font-size:10.5pt!important;}
+  .doc-page-last .opt-list th,.doc-page-last .opt-list td{padding:3px 8px!important;font-size:9pt!important;}
+  .doc-page-last table{margin-bottom:6px!important;}
+  .doc-page-last p{margin:3px 0 5px!important;font-size:9.5pt!important;}
+  .doc-page-last .doc-note-sub{font-size:9pt!important;}
+  .doc-page-last .doc-wakachi li{line-height:1.4!important;}
+  .doc-page-last .doc-wakachi{margin:1px 0 3px!important;}
+  .doc-page-last .doc-order-note{margin:8px 0 0!important;}
+  .doc-page-last .doc-from{margin-top:8px!important;padding:7px 12px!important;font-size:9pt!important;line-height:1.5!important;}
+}
 </style>
 </head>
 <body>
@@ -904,7 +920,7 @@ footer{border-top:0;}
         <div class="hc-left">
           <div class="n">プレミアムプラン</div>
           <div class="p"><span class="p-pre">基本</span><span class="p-num">40</span><span class="p-unit">万円</span></div>
-          <div class="p-tax">（税別）</div>
+          <div class="p-tax">（消費税　含みません）</div>
         </div>
         <div class="hc-sep" aria-hidden="true"></div>
         <div class="hc-right">
@@ -1606,15 +1622,15 @@ $("rf-make").addEventListener("click", function(){
   hideErr($("rf-err"));
 
   var p=PLANS[pi], sub=p.price, rows="";
-  rows += '<tr><td>'+esc(p.name)+'　（'+esc(p.descOpt||p.desc)+'）</td><td class="r">'+yen(p.price)+'</td></tr>';
+  rows += '<tr><td colspan="3">'+esc(p.name)+'　（'+esc(p.descOpt||p.desc)+'）</td><td class="r">'+yen(p.price)+'</td></tr>';
   for(var i=0;i<ops.length;i++){
     var o=OPTIONS[ops[i]];
     if(o.rate){
       /* 料率の項目は件数により変動するため、合計には加算せず率を明記する */
-      rows += '<tr><td>'+esc(o.name)+'<span style="font-size:11.5px;">'+esc(o.unit)+'</span></td><td class="r">'+esc(zen(o.rate))+'％<span style="font-size:11px;">（決済額に応じます）</span></td></tr>';
+      rows += '<tr><td>希望項目'+(i+1)+'</td><td>'+esc(o.name)+esc(o.unit)+'</td><td>'+esc(o.note)+'</td><td class="r">'+esc(zen(o.rate))+'％<span style="font-size:11px;">（決済額に応じます）</span></td></tr>';
     } else {
       sub += o.price;
-      rows += '<tr><td>'+esc(o.name)+'<span style="font-size:11.5px;">'+esc(o.unit)+'</span></td><td class="r">'+yen(o.price)+'</td></tr>';
+      rows += '<tr><td>希望項目'+(i+1)+'</td><td>'+esc(o.name)+esc(o.unit)+'</td><td>'+esc(o.note)+'</td><td class="r">'+yen(o.price)+'</td></tr>';
     }
   }
   var tax=Math.floor(sub*0.1);
@@ -1631,11 +1647,11 @@ $("rf-make").addEventListener("click", function(){
     + '<tr><th>商品プラン</th><td>'+esc(p.name)+'</td></tr>'
     + '</table>'
     + '<table>'
-    + '<tr><th>内訳</th><th class="r" style="width:32%">金額（税抜）</th></tr>'
+    + '<tr><th style="width:17%">希望項目</th><th style="width:24%">項目</th><th>説明</th><th class="r" style="width:20%">金額（税抜）</th></tr>'
     + rows
-    + '<tr><th>小計</th><td class="r">'+yen(sub)+'</td></tr>'
-    + '<tr><th>消費税（10％）</th><td class="r">'+yen(tax)+'</td></tr>'
-    + '<tr><th>合計金額（税込）</th><td class="r"><b>'+yen(sub+tax)+'</b></td></tr>'
+    + '<tr><th colspan="3">小計</th><td class="r">'+yen(sub)+'</td></tr>'
+    + '<tr><th colspan="3">消費税（10％）</th><td class="r">'+yen(tax)+'</td></tr>'
+    + '<tr><th colspan="3">合計金額（税込）</th><td class="r"><b>'+yen(sub+tax)+'</b></td></tr>'
     + '</table>'
     + noteBlock(NOTE_OPT, false, NOTE_OPT_SUB)
     + fromBlock()
@@ -1675,15 +1691,15 @@ $("od-next").addEventListener("click", function(){
 
   var p=PLANS[pi], sub=p.price, rows="", optNames=[];
   /* プラン行は説明欄を持たないため、項目・説明の２列を結合する */
-  rows += '<tr><td colspan="2">'+esc(p.name)+'　（'+esc(p.desc)+'）</td><td class="r">'+yen(p.price)+'</td></tr>';
+  rows += '<tr><td colspan="3">'+esc(p.name)+'　（'+esc(p.desc)+'）</td><td class="r">'+yen(p.price)+'</td></tr>';
   for(var i=0;i<ops.length;i++){
     var o=OPTIONS[ops[i]];
     optNames.push(o.name+"（"+optAmt(o)+"）");
     if(o.rate){
-      rows += '<tr><td>'+esc(o.name)+'</td><td>'+esc(o.note)+'</td><td class="r">'+esc(zen(o.rate))+'％'+esc(o.unit)+'</td></tr>';
+      rows += '<tr><td>希望項目'+(i+1)+'</td><td>'+esc(o.name)+'</td><td>'+esc(o.note)+'</td><td class="r">'+esc(zen(o.rate))+'％'+esc(o.unit)+'</td></tr>';
     } else {
       sub += o.price;
-      rows += '<tr><td>'+esc(o.name)+'</td><td>'+esc(o.note)+'</td><td class="r">'+yen(o.price)+esc(o.unit)+'</td></tr>';
+      rows += '<tr><td>希望項目'+(i+1)+'</td><td>'+esc(o.name)+'</td><td>'+esc(o.note)+'</td><td class="r">'+yen(o.price)+esc(o.unit)+'</td></tr>';
     }
   }
   var tax=Math.floor(sub*0.1), total=sub+tax;
@@ -1693,10 +1709,11 @@ $("od-next").addEventListener("click", function(){
   var optLines = '';
   if(ops.length){
     optLines = '<table class="opt-list">'
-      + '<tr><th style="width:26%">項目</th><th>説明</th><th class="r" style="width:22%">金額</th></tr>';
+      + '<tr><th style="width:17%">希望項目</th><th style="width:24%">項目</th><th>説明</th><th class="r" style="width:20%">金額</th></tr>';
     for(var k=0;k<ops.length;k++){
       var oo=OPTIONS[ops[k]];
       optLines += '<tr>'
+        + '<td>希望項目' + (k+1) + '</td>'
         + '<td>' + esc(oo.name) + '</td>'
         + '<td>' + esc(oo.note) + '</td>'
         + '<td class="r">' + esc(optAmt(oo)) + '</td>'
@@ -1729,7 +1746,9 @@ $("od-next").addEventListener("click", function(){
     + '<div class="doc-sec-ttl">希望項目</div>'
     + optLines
     + '<table style="margin-top:10px;">'
-    + '<tr><th style="width:34%">合計金額（税込）</th><td class="r"><b>'+yen(total)+'</b></td></tr>'
+    + '<tr><th style="width:34%">小計（税抜）</th><td class="r">'+yen(sub)+'</td></tr>'
+    + '<tr><th>消費税（10％）</th><td class="r">'+yen(tax)+'</td></tr>'
+    + '<tr><th>合計金額（税込）</th><td class="r"><b>'+yen(total)+'</b></td></tr>'
     + '</table>'
     /* ※１ページ目にフッター（注意書き＋会社署名の末尾ブロック）は入れない（08.14 追加修正）。
        原稿docxでは注意書きと署名が同一セルの一体ブロックのため、両方を削除。
@@ -1741,11 +1760,11 @@ $("od-next").addEventListener("click", function(){
     + '<h3 class="doc-ttl">発注内訳</h3>'
     + '<p class="doc-date">発注番号　'+esc(no)+'　（2／3）</p>'
     + '<table>'
-    + '<tr><th style="width:26%">項目</th><th>説明</th><th class="r" style="width:22%">金額（税抜）</th></tr>'
+    + '<tr><th style="width:17%">希望項目</th><th style="width:24%">項目</th><th>説明</th><th class="r" style="width:20%">金額（税抜）</th></tr>'
     + rows
-    + '<tr><th>小計</th><td></td><td class="r">'+yen(sub)+'</td></tr>'
-    + '<tr><th>消費税（10％）</th><td></td><td class="r">'+yen(tax)+'</td></tr>'
-    + '<tr><th>合計金額（税込）</th><td></td><td class="r"><b>'+yen(total)+'</b></td></tr>'
+    + '<tr><th colspan="3">小計</th><td class="r">'+yen(sub)+'</td></tr>'
+    + '<tr><th colspan="3">消費税（10％）</th><td class="r">'+yen(tax)+'</td></tr>'
+    + '<tr><th colspan="3">合計金額（税込）</th><td class="r"><b>'+yen(total)+'</b></td></tr>'
     + '</table>'
     + '<div class="doc-sec-ttl">ご連絡事項</div>'
     + '<p style="min-height:70px;border:1px solid #666;padding:10px 12px;white-space:pre-wrap;">'+(memo?esc(memo):"（記載なし）")+'</p>'
@@ -1754,7 +1773,7 @@ $("od-next").addEventListener("click", function(){
     + '</div>'
 
     /* 3ページ目 */
-    + '<div class="doc doc-page">'
+    + '<div class="doc doc-page doc-page-last">'
     + '<h3 class="doc-ttl">ご確認事項</h3>'
     + '<p class="doc-date">発注番号　'+esc(no)+'　（3／3）</p>'
     + '<div class="doc-sec-ttl">納期</div>'
@@ -1764,9 +1783,27 @@ $("od-next").addEventListener("click", function(){
     + notIncludedList()
     + orderNote()
     + '<div class="doc-sec-ttl">保守管理の業務</div>'
-    + '<p>サーバー・ドメイン管理（月1回まで）、ＳＳＬ証明書の更新（年1回まで）、サーバーバックアップ（月２回まで）、障害対応（月２件まで）、運用とセキュリティ助言（月２回まで・各1時間以内）。機器の購入・修理・設置、データ入力、大規模リニューアル、構造変更、コンテンツ制作、ＳＥＯ実施、アクセス解析は含みません。</p>'
+    + '<ul class="doc-note-sub doc-wakachi">'
+    + '<li>サーバー・ドメイン管理（月１回まで）</li>'
+    + '<li>ＳＳＬ証明書の更新（年１回まで）</li>'
+    + '<li>サーバーバックアップ（月２回まで）</li>'
+    + '<li>障害対応（月２件まで）</li>'
+    + '<li>運用とセキュリティ助言（月２回まで・各１時間以内）</li>'
+    + '</ul>'
+    + '<p class="doc-wakachi-note">次の作業は含みません。</p>'
+    + '<ul class="doc-note-sub doc-wakachi">'
+    + '<li>機器の購入・修理・設置</li>'
+    + '<li>データ入力</li>'
+    + '<li>大規模リニューアル、構造変更</li>'
+    + '<li>コンテンツ制作、ＳＥＯ実施、アクセス解析</li>'
+    + '</ul>'
     + '<div class="doc-sec-ttl">運用代行の業務</div>'
-    + '<p>テキスト修正（400字以内）、画像差替え（２点以内）、リンク修正（３点以内）を、いずれも月５回までお請けします。構成変更、ページ追加、デザイン変更は別途お見積りいたします。</p>'
+    + '<ul class="doc-note-sub doc-wakachi">'
+    + '<li>テキスト修正（400字以内）</li>'
+    + '<li>画像差替え（２点以内）</li>'
+    + '<li>リンク修正（３点以内）</li>'
+    + '</ul>'
+    + '<p class="doc-wakachi-note">いずれも月５回までお請けします。<br>構成変更、ページ追加、デザイン変更は別途お見積りいたします。</p>'
     + '<div class="doc-sec-ttl">お問合せ</div>'
     + '<p>ＴＥＬ　'+esc(COMPANY.tel)+'（平日10時〜16時）　／　メール　'+esc(COMPANY.mail)+'　／　フロント　'+esc(COMPANY.front)+'</p>'
     + fromBlock()
