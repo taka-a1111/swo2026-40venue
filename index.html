@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_40venue_ver5.1w / 2026-08-16 -->
+<!-- BUILD_TAG: swo2026_40venue_ver5.2w / 2026-08-16 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -1868,14 +1868,19 @@ $("od-send").addEventListener("click", function(){
     method: "POST",
     headers: {"Content-Type":"text/plain;charset=utf-8"}, // Apps Script側の制約でtext/plainで送る
     body: JSON.stringify({
+      product: "ＳＷＯ２０２６ＬＰ改訂40万円",
       docNo: no,
       org: org,
       name: nm,
       email: ml,
       planName: p.name,
       options: optNames,
+      subtotal: sub,
+      tax: tax,
+      totalNum: total,
       total: yen(total),
-      memo: memo || ""
+      memo: memo || "",
+      docHtml: $("od-doc").innerHTML
     })
   })
   .then(function(res){ return res.json(); })
