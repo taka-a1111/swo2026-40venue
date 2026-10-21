@@ -24,7 +24,7 @@ BTN3 = ('<div class="btns" style="margin-top:26px;">\n'
 
 # ---- BUILD_TAG ----
 rep('<!-- BUILD_TAG: swo2026_40venue_ver5.5wB / 2026-08-18 -->',
-    '<!-- BUILD_TAG: swo2026_40venue_oct_ver1.0 / 2026-10-21 -->')
+    '<!-- BUILD_TAG: swo2026_40venue_oct_ver1.1 / 2026-10-21 -->')
 
 # ---- ①-2 メニュー ----
 rep('<li><a href="#price40">40万円</a></li>', '<li><a href="#price40">プラン内容</a></li>')
@@ -39,9 +39,9 @@ rep('''      <img src="images/hall.png" alt="学会会場の様子" class="on">
       <img src="images/lecture.png" alt="公演の様子">
     </div>''' + '    ' + '''
   </div>''',
-    '''      <img src="images/metaverse-entrance.png" alt="メタバース学会の会場入口" class="on">
-      <img src="images/professor-lecture.png" alt="品格ある教授の学術講演">
-      <img src="images/metaverse-meeting.png" alt="第12回メタバース学会の打ち合わせ">
+    '''      <img src="images/metaverse-entrance.jpg" alt="メタバース学会の会場入口" class="on">
+      <img src="images/professor-lecture.jpg" alt="品格ある教授の学術講演">
+      <img src="images/metaverse-meeting.jpg" alt="第12回メタバース学会の打ち合わせ">
     </div>
     ''' + BTN3.replace('margin-top:26px', 'margin-top:20px') + '''
   </div>''')
@@ -55,7 +55,7 @@ rep('海外招へい費用、協賛金、懇親会の会場予約、研究施設
 
 # ---- ⑫⑬ 青枠 ／ ⑭ ボタン削除 ----
 rep('<p class="answer-ttl"><span style="color: #ffffff;">開催準備の作業と負担をまとめて軽減します</span></p>\n      <p class="answer-txt"><span style="color: #ffffff;">学会準備にて必要な機能を、最初からセットアップします。<br>学会開催前も、閉会後も。</span></p>',
-    '<p class="answer-ttl"><span style="color: #ffffff;">ホームページと登録システムを、ひとつの窓口で</span></p>\n      <ul class="answer-list">\n        <li><span style="color: #ffffff;">開催案内ホームページを制作</span></li>\n        <li><span style="color: #ffffff;">演題登録・参加登録・カード決済を用意</span></li>\n        <li><span style="color: #ffffff;">公開後の修正・更新にも対応</span></li>\n      </ul>')
+    '<p class="answer-ttl"><span style="color: #ffffff;">ホームページと登録システムを、ひとつの窓口で</span></p>\n      <ul class="answer-list">\n        <li><span style="color: #ffffff;">・開催案内ホームページを制作</span></li>\n        <li><span style="color: #ffffff;">・演題登録・参加登録・カード決済を用意</span></li>\n        <li><span style="color: #ffffff;">・公開後の修正・更新にも対応</span></li>\n      </ul>')
 rep('''    </div>
 
     <div class="btns two" style="margin-top:26px;">
@@ -305,8 +305,7 @@ CSS = '''
 .answer-box{padding:44px 40px;}
 .answer-ttl{font-size:30px;line-height:1.5;margin:0 0 18px;}
 .answer-list{list-style:none;margin:0 auto;padding:0;display:inline-block;text-align:left;}
-.answer-list li{font-size:20px;font-weight:700;line-height:1.9;padding-left:1.2em;position:relative;}
-.answer-list li::before{content:"・";position:absolute;left:0;color:#fff;}
+.answer-list li{font-size:20px;font-weight:700;line-height:1.9;padding-left:1em;text-indent:-1em;}
 /* 47 小さめの注記 ／ 48 大きめの一文 */
 .free-note{font-size:12.5px;margin:14px 0 0;line-height:1.7;}
 .free-lead{font-size:22px;font-weight:800;color:var(--navy-ink);text-align:center;line-height:1.6;margin:28px 0 0;}
