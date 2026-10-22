@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_40venue_oct_ver1.1 / 2026-10-21 -->
+<!-- BUILD_TAG: swo2026_40venue_oct_ver2.0 / 2026-10-22 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -1027,6 +1027,23 @@ footer p,footer .ft-line,footer .ft-copy,footer .ft-brand{color:#fff !important;
   table.works-tbl td.wk-num{padding-bottom:14px;border-bottom:1px solid var(--rule);}
 }
 /* ===== 10月修正：ここまで ===== */
+
+/* ===== 10月修正 再校：ここから ===== */
+/* 1枚目：30万円の枠を中央ぞろえ */
+.basic-link{flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;}
+.basic-link .bl-plan{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:0 14px;}
+@media (max-width:760px){ .basic-link{align-items:center;} .basic-link .bl-btn{width:auto;min-width:200px;} }
+/* 2枚目：年度の行の色 */
+table.works-tbl tr.wk-group th{background:#E2F1F6;}
+/* 2枚目：表はなるべく1行に。主催者は「日本ヘルスコミュニケーション学会」が1行に収まる大きさでそろえる */
+@media (min-width:761px){
+  table.works-tbl th.wk-name{width:31%;}
+  table.works-tbl th.wk-sup{width:31%;}
+  table.works-tbl th.wk-org{width:27%;}
+  table.works-tbl th.wk-num{width:11%;}
+  table.works-tbl td.wk-org{font-size:13px;white-space:nowrap;}
+}
+/* ===== 10月修正 再校：ここまで ===== */
 </style>
 </head>
 <body>
@@ -1133,9 +1150,8 @@ footer p,footer .ft-line,footer .ft-copy,footer .ft-brand{color:#fff !important;
     </div>
     
     <div class="basic-link">
-      <span class="bl-name">ホームページをお持ちで、登録システムとカード決済をご希望の場合は　　　</span>
-      <span class="bl-price">スタンダードプラン</span>
-      <span class="bl-price">30万円　　　</span>
+      <span class="bl-name">ホームページをお持ちで、登録システムとカード決済をご希望の場合は</span>
+      <span class="bl-plan"><span class="bl-price">スタンダードプラン</span><span class="bl-price">30万円</span></span>
       <a class="bl-btn" href="https://science-web.online/30venue" target="_blank" rel="noopener">詳しくはこちら</a>
     </div>
 
@@ -1220,25 +1236,25 @@ footer p,footer .ft-line,footer .ft-copy,footer .ft-brand{color:#fff !important;
       <thead><tr><th class="wk-name">開催名</th><th class="wk-sup">支援内容</th><th class="wk-org">主催者</th><th class="wk-num">参加者数</th></tr></thead>
       <tbody>
       <tr class="wk-group"><th colspan="4">2023年度の支援案件</th></tr>
-      <tr><td class="wk-name">APN2023</td><td class="wk-sup">開催案内ホームページ／参加登録システム／カード決済</td><td class="wk-org">Asian Pharmacometrics Network</td><td class="wk-num">約100名</td></tr>
-      <tr><td class="wk-name">10th MDM2</td><td class="wk-sup">開催案内ホームページ／演題登録システム／参加登録システム／カード決済</td><td class="wk-org">10th MDM2　組織委員会</td><td class="wk-num">約200名</td></tr>
-      <tr><td class="wk-name">第46回日本小児遺伝学会学術集会</td><td class="wk-sup">開催案内ホームページ／演題登録システム／参加登録システム／カード決済</td><td class="wk-org">日本小児遺伝学会</td><td class="wk-num">約200名</td></tr>
-      <tr><td class="wk-name">ヘルスコミュニケーションウィーク2023</td><td class="wk-sup">参加登録システム／カード決済</td><td class="wk-org">日本ヘルスコミュニケーション学会</td><td class="wk-num">約200名</td></tr>
+      <tr><td class="wk-name">APN2023</td><td class="wk-sup">開催案内／参加登録／カード決済</td><td class="wk-org">Asian Pharmacometrics Network</td><td class="wk-num">約100名</td></tr>
+      <tr><td class="wk-name">10th MDM2</td><td class="wk-sup">開催案内／演題登録／参加登録／カード決済</td><td class="wk-org">10th MDM2　組織委員会</td><td class="wk-num">約200名</td></tr>
+      <tr><td class="wk-name">第46回日本小児遺伝学会学術集会</td><td class="wk-sup">開催案内／演題登録／参加登録／カード決済</td><td class="wk-org">日本小児遺伝学会</td><td class="wk-num">約200名</td></tr>
+      <tr><td class="wk-name">ヘルスコミュニケーションウィーク2023</td><td class="wk-sup">参加登録／カード決済</td><td class="wk-org">日本ヘルスコミュニケーション学会</td><td class="wk-num">約200名</td></tr>
       <tr class="wk-group"><th colspan="4">2024年度の支援案件</th></tr>
-      <tr><td class="wk-name">4thIAS</td><td class="wk-sup">演題登録システム／参加登録システム</td><td class="wk-org">国際スポートロジー学会</td><td class="wk-num">約500名</td></tr>
-      <tr><td class="wk-name">ISMOM2024</td><td class="wk-sup">開催案内ホームページ／演題登録システム／参加登録システム／カード決済</td><td class="wk-org">国際土壌科学連合</td><td class="wk-num">約200名</td></tr>
-      <tr><td class="wk-name">頭頚部がん治療と就労の両立支援のためのシンポジウム</td><td class="wk-sup">開催案内ホームページ／参加登録システム</td><td class="wk-org">東京都保健医療局</td><td class="wk-num">約100名</td></tr>
+      <tr><td class="wk-name">4thIAS</td><td class="wk-sup">演題登録／参加登録</td><td class="wk-org">国際スポートロジー学会</td><td class="wk-num">約500名</td></tr>
+      <tr><td class="wk-name">ISMOM2024</td><td class="wk-sup">開催案内／演題登録／参加登録／カード決済</td><td class="wk-org">国際土壌科学連合</td><td class="wk-num">約200名</td></tr>
+      <tr><td class="wk-name">頭頚部がん治療と就労の両立支援のためのシンポジウム</td><td class="wk-sup">開催案内／参加登録</td><td class="wk-org">東京都保健医療局</td><td class="wk-num">約100名</td></tr>
       <tr class="wk-group"><th colspan="4">2025年度の支援案件</th></tr>
-      <tr><td class="wk-name">第67回日本平滑筋学会総会</td><td class="wk-sup">開催案内ホームページ／演題登録システム／参加登録システム／カード決済</td><td class="wk-org">日本平滑筋学会</td><td class="wk-num">約150名</td></tr>
+      <tr><td class="wk-name">第67回日本平滑筋学会総会</td><td class="wk-sup">開催案内／演題登録／参加登録／カード決済</td><td class="wk-org">日本平滑筋学会</td><td class="wk-num">約150名</td></tr>
       <tr class="wk-group"><th colspan="4">2026年度の支援案件</th></tr>
-      <tr><td class="wk-name">第38回日本軟骨代謝学会</td><td class="wk-sup">開催案内ホームページ／演題登録システム／参加登録システム／カード決済</td><td class="wk-org">日本軟骨代謝学会</td><td class="wk-num">約300名</td></tr>
-      <tr><td class="wk-name">FJC2026</td><td class="wk-sup">参加登録システム／カード決済</td><td class="wk-org">FJC2026　組織委員会</td><td class="wk-num">約100名</td></tr>
-      <tr><td class="wk-name">WASCON2026</td><td class="wk-sup">開催案内ホームページ／演題登録システム／参加登録システム／カード決済</td><td class="wk-org">WASCON2026　組織委員会</td><td class="wk-num">約150名</td></tr>
-      <tr><td class="wk-name">ISAM5</td><td class="wk-sup">開催案内ホームページ／演題登録システム／参加登録システム／カード決済</td><td class="wk-org">ISAM5　組織委員会</td><td class="wk-num">約100名</td></tr>
+      <tr><td class="wk-name">第38回日本軟骨代謝学会</td><td class="wk-sup">開催案内／演題登録／参加登録／カード決済</td><td class="wk-org">日本軟骨代謝学会</td><td class="wk-num">約300名</td></tr>
+      <tr><td class="wk-name">FJC2026</td><td class="wk-sup">参加登録／カード決済</td><td class="wk-org">FJC2026　組織委員会</td><td class="wk-num">約100名</td></tr>
+      <tr><td class="wk-name">WASCON2026</td><td class="wk-sup">開催案内／演題登録／参加登録／カード決済</td><td class="wk-org">WASCON2026　組織委員会</td><td class="wk-num">約150名</td></tr>
+      <tr><td class="wk-name">ISAM5</td><td class="wk-sup">開催案内／演題登録／参加登録／カード決済</td><td class="wk-org">ISAM5　組織委員会</td><td class="wk-num">約100名</td></tr>
       <tr class="wk-group"><th colspan="4">受託・準備中の案件</th></tr>
-      <tr><td class="wk-name">第24回日本機能性食品医用学会総会</td><td class="wk-sup">開催案内ホームページ／参加登録システム／カード決済</td><td class="wk-org">日本機能性食品医用学会</td><td class="wk-num">約200名</td></tr>
-      <tr><td class="wk-name">ICCDU2027</td><td class="wk-sup">開催案内ホームページ／演題登録システム／参加登録システム／カード決済</td><td class="wk-org">ICCDU2027　組織委員会</td><td class="wk-num">約400名</td></tr>
-      <tr><td class="wk-name">PhotoIUPAC2028</td><td class="wk-sup">開催案内ホームページ／演題登録システム／参加登録システム／カード決済</td><td class="wk-org">PhotoIUPAC2028　組織委員会</td><td class="wk-num">約600名</td></tr>
+      <tr><td class="wk-name">第24回日本機能性食品医用学会総会</td><td class="wk-sup">開催案内／参加登録／カード決済</td><td class="wk-org">日本機能性食品医用学会</td><td class="wk-num">約200名</td></tr>
+      <tr><td class="wk-name">ICCDU2027</td><td class="wk-sup">開催案内／演題登録／参加登録／カード決済</td><td class="wk-org">ICCDU2027　組織委員会</td><td class="wk-num">約400名</td></tr>
+      <tr><td class="wk-name">PhotoIUPAC2028</td><td class="wk-sup">開催案内／演題登録／参加登録／カード決済</td><td class="wk-org">PhotoIUPAC2028　組織委員会</td><td class="wk-num">約600名</td></tr>
       </tbody>
     </table>
     <p class="works-note">掲載している案件は、掲載許可をいただいた支援実績・受託案件の一部です。掲載していない案件もあります。</p>
