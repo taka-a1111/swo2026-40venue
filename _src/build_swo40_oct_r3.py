@@ -18,7 +18,7 @@ def rep(old, new, n=1):
 
 
 rep('<!-- BUILD_TAG: swo2026_40venue_oct_ver2.0 / 2026-10-22 -->',
-    '<!-- BUILD_TAG: swo2026_40venue_oct_ver3.1 / 2026-10-23 -->')
+    '<!-- BUILD_TAG: swo2026_40venue_oct_ver3.2 / 2026-10-23 -->')
 
 # ---- 1枚目：お悩みの項目を1行に（「施設訪問」を削除） ----
 rep('海外招へい・協賛金の募集・懇親会・施設訪問など、手配することが多い',
@@ -67,6 +67,8 @@ s = s[:start] + new_tbl + s[end:]
 
 CSS = '''
 /* ===== 10月修正 三校：ここから ===== */
+/* お悩み：761〜1023px（スマホのパソコン表示を含む）でも1行に収まるよう、文字を少しだけ小さく・右の余白を詰める */
+@media (min-width:761px) and (max-width:1023px){ .worries li{font-size:14px;padding-right:8px;} }
 /* 業務内容：業務と料金をそろえた表（区分は左ぞろえ、金額は右ぞろえ） */
 table.biz-tbl{width:100%;border-collapse:separate;border-spacing:0 2px;font-size:14.5px;margin-top:6px;}
 table.biz-tbl th,table.biz-tbl td{padding:8px 12px;text-align:left;vertical-align:middle;line-height:1.5;}
