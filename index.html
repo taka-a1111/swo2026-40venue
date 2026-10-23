@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_40venue_oct_ver3.1 / 2026-10-23 -->
+<!-- BUILD_TAG: swo2026_40venue_oct_ver3.2 / 2026-10-23 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -1046,6 +1046,8 @@ table.works-tbl tr.wk-group th{background:#E2F1F6;}
 /* ===== 10月修正 再校：ここまで ===== */
 
 /* ===== 10月修正 三校：ここから ===== */
+/* お悩み：761〜1023px（スマホのパソコン表示を含む）でも1行に収まるよう、文字を少しだけ小さく・右の余白を詰める */
+@media (min-width:761px) and (max-width:1023px){ .worries li{font-size:14px;padding-right:8px;} }
 /* 業務内容：業務と料金をそろえた表（区分は左ぞろえ、金額は右ぞろえ） */
 table.biz-tbl{width:100%;border-collapse:separate;border-spacing:0 2px;font-size:14.5px;margin-top:6px;}
 table.biz-tbl th,table.biz-tbl td{padding:8px 12px;text-align:left;vertical-align:middle;line-height:1.5;}
