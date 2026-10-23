@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_40venue_oct_ver2.0 / 2026-10-22 -->
+<!-- BUILD_TAG: swo2026_40venue_oct_ver3.0 / 2026-10-23 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -1044,6 +1044,31 @@ table.works-tbl tr.wk-group th{background:#E2F1F6;}
   table.works-tbl td.wk-org{font-size:13px;white-space:nowrap;}
 }
 /* ===== 10月修正 再校：ここまで ===== */
+
+/* ===== 10月修正 三校：ここから ===== */
+/* 業務内容：業務と料金をそろえた表（区分は左ぞろえ、金額は右ぞろえ） */
+table.biz-tbl{width:100%;border-collapse:separate;border-spacing:0 2px;font-size:14.5px;margin-top:6px;}
+table.biz-tbl th,table.biz-tbl td{padding:8px 12px;text-align:left;vertical-align:middle;line-height:1.5;}
+table.biz-tbl th.biz-cat{width:21%;background:#e3e6ea;font-weight:800;white-space:nowrap;border-right:2px solid #fff;}
+table.biz-tbl td{background:#f2f4f6;}
+table.biz-tbl td.biz-name{width:30%;}
+table.biz-tbl td.biz-price{width:9%;text-align:right;white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums;border-right:2px solid #fff;}
+table.biz-tbl td.biz-url{word-break:break-all;}
+table.biz-tbl tbody.biz-group + tbody.biz-group tr:first-child > *{border-top:10px solid #fff;}
+/* スマホ・タブレット（1023px以下）：区分を見出し行にし、左列＝業務名とURL、右列＝金額の2列の表（罫線あり） */
+@media (max-width:1023px){
+  table.biz-tbl{display:block;width:100%;}
+  table.biz-tbl tbody.biz-group{display:block;border:1px solid #c9ced4;margin-bottom:14px;}
+  table.biz-tbl tbody.biz-group + tbody.biz-group tr:first-child > *{border-top:0;}
+  table.biz-tbl tr{display:grid;grid-template-columns:1fr 64px;background:#f2f4f6;border-top:1px solid #c9ced4;}
+  table.biz-tbl tr:first-child{border-top:0;}
+  table.biz-tbl th.biz-cat{display:block;grid-column:1 / -1;width:auto;border-right:0;border-bottom:1px solid #c9ced4;padding:8px 12px;}
+  table.biz-tbl td{display:block;width:auto!important;background:transparent;border-right:0!important;}
+  table.biz-tbl td.biz-name{grid-column:1;padding:8px 8px 2px 12px;}
+  table.biz-tbl td.biz-price{grid-column:2;grid-row:span 2;display:flex;align-items:center;justify-content:flex-end;padding:8px 12px 8px 4px;border-left:1px solid #c9ced4;}
+  table.biz-tbl td.biz-url{grid-column:1;padding:0 8px 8px 12px;font-size:12px;line-height:1.45;}
+}
+/* ===== 10月修正 三校：ここまで ===== */
 </style>
 </head>
 <body>
@@ -1109,7 +1134,7 @@ table.works-tbl tr.wk-group th{background:#E2F1F6;}
       <li><span style="color: #000000;">開催案内ホームページの公開まで時間がない</span></li>
       <li><span style="color: #000000;">公開後の更新・サーバー管理まで手が回らない</span></li>
       <li><span style="color: #000000;">委員が国内外に分散しており、連絡・調整に手間がかかる</span></li>
-      <li><span style="color: #000000;">海外招へい・協賛金の募集・懇親会・施設訪問など、手配することが多い</span></li>
+      <li><span style="color: #000000;">海外招へい・協賛金の募集・懇親会など、手配することが多い</span></li>
     </ul>
 
     <div class="answer-box">
@@ -1308,63 +1333,25 @@ table.works-tbl tr.wk-group th{background:#E2F1F6;}
     </div>
     
     <h3 class="sub-ttl">業務内容</h3>
-    <table class="tbl-clear">
-      <!-- 制作 Webサイト -->
-      <tr>
-        <th rowspan="4" style="width: 18%;">制作　Webサイト</th>
-        <td style="width: 44%;">・研究室ホームページ 5万円（LP3ページ）</td>
-        <td style="width: 38%; word-break: break-all;"><a href="https://science-web.co.jp/lab.trial/" target="_blank" rel="noopener">https://science-web.co.jp/lab.trial/</a></td>
-      </tr>
-      <tr>
-        <td>・研究室ホームページ 20万円（LP10ページ）</td>
-        <td style="word-break: break-all;"><a href="https://science-web.co.jp/lab/" target="_blank" rel="noopener">https://science-web.co.jp/lab/</a></td>
-      </tr>
-      <tr>
-        <td>・学会ホームページ 20万円（LP10ページ）</td>
-        <td style="word-break: break-all;"><a href="https://science-web.co.jp/gakkai/" target="_blank" rel="noopener">https://science-web.co.jp/gakkai/</a></td>
-      </tr>
-      <tr>
-        <td>・研究費ホームページ 20万円（LP10ページ）</td>
-        <td style="word-break: break-all;"><a href="https://science-web.co.jp/science" target="_blank" rel="noopener">https://science-web.co.jp/science</a></td>
-      </tr>
-
-      <!-- 開発 Webアプリ -->
-      <tr>
-        <th rowspan="5" style="padding-top: 24px;">開発　Webシステム</th>
-        <td style="padding-top: 24px;">・論文投稿システム 5万円（査読機能／マイページ・なし）</td>
-        <td style="padding-top: 24px; word-break: break-all;"><a href="https://science-web.tokyo/ronbun.trial/" target="_blank" rel="noopener">https://science-web.tokyo/ronbun.trial/</a></td>
-      </tr>
-      <tr>
-        <td>・論文投稿システム 20万円（査読機能なし）</td>
-        <td style="word-break: break-all;"><a href="https://science-web.tokyo/ronbun/" target="_blank" rel="noopener">https://science-web.tokyo/ronbun/</a></td>
-      </tr>
-      <tr>
-        <td>・紀要管理システム 30万円（査読機能なし）</td>
-        <td style="word-break: break-all;"><a href="https://science-web.tokyo/bulletin/" target="_blank" rel="noopener">https://science-web.tokyo/bulletin/</a></td>
-      </tr>
-      <tr>
-        <td>・役員選挙システム 20万円（選挙機能なし）</td>
-        <td style="word-break: break-all;"><a href="https://science-web.tokyo/senkyo/" target="_blank" rel="noopener">https://science-web.tokyo/senkyo/</a></td>
-      </tr>
-      <tr>
-        <td>・学会事務システム 20万円（会費徴収なし）</td>
-        <td style="word-break: break-all;"><a href="https://science-web.tokyo/jimu/" target="_blank" rel="noopener">https://science-web.tokyo/jimu/</a></td>
-      </tr>
-
-      <!-- 開発 会議開催サポート -->
-      <tr>
-        <th rowspan="3" style="padding-top: 24px;">開発　会議開催サポート</th>
-        <td style="padding-top: 24px;">・演題登録・参加登録システム 30万円</td>
-        <td style="padding-top: 24px; word-break: break-all;"><a href="https://science-web.online/30venue" target="_blank" rel="noopener">https://science-web.online/30venue</a></td>
-      </tr>
-      <tr>
-        <td>・開催案内 ＋登録システム2点 40万円</td>
-        <td style="word-break: break-all;"><a href="https://science-web.online/40venue" target="_blank" rel="noopener">https://science-web.online/40venue</a></td>
-      </tr>
-      <tr>
-        <td>・オンライン事務局</td>
-        <td style="word-break: break-all;"><a href="https://science-web.online/online-secretariat/" target="_blank" rel="noopener">https://science-web.online/online-secretariat/</a></td>
-      </tr>
+    <table class="tbl-clear biz-tbl">
+      <tbody class="biz-group">
+      <tr><th rowspan="4" class="biz-cat" scope="rowgroup">制作　Webサイト</th><td class="biz-name">・研究室ホームページ</td><td class="biz-price">5万円</td><td class="biz-url"><a href="https://science-web.co.jp/lab.trial/" target="_blank" rel="noopener">https://science-web.co.jp/lab.trial/</a></td></tr>
+      <tr><td class="biz-name">・研究室ホームページ</td><td class="biz-price">20万円</td><td class="biz-url"><a href="https://science-web.co.jp/lab/" target="_blank" rel="noopener">https://science-web.co.jp/lab/</a></td></tr>
+      <tr><td class="biz-name">・学会ホームページ</td><td class="biz-price">20万円</td><td class="biz-url"><a href="https://science-web.co.jp/gakkai/" target="_blank" rel="noopener">https://science-web.co.jp/gakkai/</a></td></tr>
+      <tr><td class="biz-name">・研究費ホームページ</td><td class="biz-price">20万円</td><td class="biz-url"><a href="https://science-web.co.jp/science" target="_blank" rel="noopener">https://science-web.co.jp/science</a></td></tr>
+      </tbody>
+      <tbody class="biz-group">
+      <tr><th rowspan="5" class="biz-cat" scope="rowgroup">開発　Webシステム</th><td class="biz-name">・論文投稿システム</td><td class="biz-price">5万円</td><td class="biz-url"><a href="https://science-web.tokyo/ronbun.trial/" target="_blank" rel="noopener">https://science-web.tokyo/ronbun.trial/</a></td></tr>
+      <tr><td class="biz-name">・論文投稿システム</td><td class="biz-price">20万円</td><td class="biz-url"><a href="https://science-web.tokyo/ronbun/" target="_blank" rel="noopener">https://science-web.tokyo/ronbun/</a></td></tr>
+      <tr><td class="biz-name">・紀要管理システム</td><td class="biz-price">30万円</td><td class="biz-url"><a href="https://science-web.tokyo/bulletin/" target="_blank" rel="noopener">https://science-web.tokyo/bulletin/</a></td></tr>
+      <tr><td class="biz-name">・役員選挙システム</td><td class="biz-price">20万円</td><td class="biz-url"><a href="https://science-web.tokyo/senkyo/" target="_blank" rel="noopener">https://science-web.tokyo/senkyo/</a></td></tr>
+      <tr><td class="biz-name">・学会事務システム</td><td class="biz-price">20万円</td><td class="biz-url"><a href="https://science-web.tokyo/jimu-system/" target="_blank" rel="noopener">https://science-web.tokyo/jimu-system/</a></td></tr>
+      </tbody>
+      <tbody class="biz-group">
+      <tr><th rowspan="3" class="biz-cat" scope="rowgroup">開発　会議開催サポート</th><td class="biz-name">・演題登録・参加登録システム</td><td class="biz-price">30万円</td><td class="biz-url"><a href="https://science-web.online/30venue" target="_blank" rel="noopener">https://science-web.online/30venue</a></td></tr>
+      <tr><td class="biz-name">・開催案内 ＋登録システム2点</td><td class="biz-price">40万円</td><td class="biz-url"><a href="https://science-web.online/40venue" target="_blank" rel="noopener">https://science-web.online/40venue</a></td></tr>
+      <tr><td class="biz-name">・オンライン事務局</td><td class="biz-price"></td><td class="biz-url"><a href="https://science-web.online/online-secretariat/" target="_blank" rel="noopener">https://science-web.online/online-secretariat/</a></td></tr>
+      </tbody>
     </table>
     
     <div class="btns" style="margin-top:26px;">
