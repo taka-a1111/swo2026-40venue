@@ -18,7 +18,7 @@ def rep(old, new, n=1):
 
 
 rep('<!-- BUILD_TAG: swo2026_40venue_oct_ver2.0 / 2026-10-22 -->',
-    '<!-- BUILD_TAG: swo2026_40venue_oct_ver3.0 / 2026-10-23 -->')
+    '<!-- BUILD_TAG: swo2026_40venue_oct_ver3.1 / 2026-10-23 -->')
 
 # ---- 1枚目：お悩みの項目を1行に（「施設訪問」を削除） ----
 rep('海外招へい・協賛金の募集・懇親会・施設訪問など、手配することが多い',
@@ -76,8 +76,17 @@ table.biz-tbl td.biz-name{width:30%;}
 table.biz-tbl td.biz-price{width:9%;text-align:right;white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums;border-right:2px solid #fff;}
 table.biz-tbl td.biz-url{word-break:break-all;}
 table.biz-tbl tbody.biz-group + tbody.biz-group tr:first-child > *{border-top:10px solid #fff;}
-/* スマホ・タブレット（1023px以下）：区分を見出し行にし、左列＝業務名とURL、右列＝金額の2列の表（罫線あり） */
-@media (max-width:1023px){
+/* 761〜1023px：見本どおりの4列のまま、URLの文字を少し小さくして収める */
+@media (min-width:761px) and (max-width:1023px){
+  table.biz-tbl{font-size:13.5px;}
+  table.biz-tbl th,table.biz-tbl td{padding:8px 8px;}
+  table.biz-tbl th.biz-cat{width:20%;white-space:normal;}
+  table.biz-tbl td.biz-name{width:28%;}
+  table.biz-tbl td.biz-price{width:9%;}
+  table.biz-tbl td.biz-url{font-size:12px;}
+}
+/* スマホ（760px以下）：区分を見出し行にし、左列＝業務名とURL、右列＝金額の2列の表（罫線あり） */
+@media (max-width:760px){
   table.biz-tbl{display:block;width:100%;}
   table.biz-tbl tbody.biz-group{display:block;border:1px solid #c9ced4;margin-bottom:14px;}
   table.biz-tbl tbody.biz-group + tbody.biz-group tr:first-child > *{border-top:0;}
