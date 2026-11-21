@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/images/:f(hall|presentation|lecture).png", "destination": "https://science-web.online/40venue/images/:f.png" }
+  ]
+}
